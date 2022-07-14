@@ -47,7 +47,7 @@ namespace ByLearningRabbitmq
              各参数说明：
              queue:队列的名称
              durable：是否持久化，排他队列是基于连接可见，连接断开后自动删除
-             exclusive:是否排他
+             exclusive:是否排他，当设置队列为排他时，只对首次声明它的连接可见
              autoDelete:是否自动删除
              arguments:结构化参数
              */
