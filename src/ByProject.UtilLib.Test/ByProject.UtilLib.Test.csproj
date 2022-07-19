@@ -1,0 +1,107 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Remove="D:\BoydenLib\.nuget\packages\emptyfiles\2.3.2\contentFiles\any\any\EmptyFiles\archive\empty.7z" />
+    <Content Remove="D:\BoydenLib\.nuget\packages\emptyfiles\2.3.2\contentFiles\any\any\EmptyFiles\archive\empty.bz2" />
+    <Content Remove="D:\BoydenLib\.nuget\packages\emptyfiles\2.3.2\contentFiles\any\any\EmptyFiles\archive\empty.gz" />
+    <Content Remove="D:\BoydenLib\.nuget\packages\emptyfiles\2.3.2\contentFiles\any\any\EmptyFiles\archive\empty.tar" />
+    <Content Remove="D:\BoydenLib\.nuget\packages\emptyfiles\2.3.2\contentFiles\any\any\EmptyFiles\archive\empty.zip" />
+    <Content Remove="D:\BoydenLib\.nuget\packages\emptyfiles\2.3.2\contentFiles\any\any\EmptyFiles\document\empty.docx" />
+    <Content Remove="D:\BoydenLib\.nuget\packages\emptyfiles\2.3.2\contentFiles\any\any\EmptyFiles\document\empty.odt" />
+    <Content Remove="D:\BoydenLib\.nuget\packages\emptyfiles\2.3.2\contentFiles\any\any\EmptyFiles\document\empty.pdf" />
+    <Content Remove="D:\BoydenLib\.nuget\packages\emptyfiles\2.3.2\contentFiles\any\any\EmptyFiles\document\empty.rtf" />
+    <Content Remove="D:\BoydenLib\.nuget\packages\emptyfiles\2.3.2\contentFiles\any\any\EmptyFiles\image\empty.avif" />
+    <Content Remove="D:\BoydenLib\.nuget\packages\emptyfiles\2.3.2\contentFiles\any\any\EmptyFiles\image\empty.bmp" />
+    <Content Remove="D:\BoydenLib\.nuget\packages\emptyfiles\2.3.2\contentFiles\any\any\EmptyFiles\image\empty.dds" />
+    <Content Remove="D:\BoydenLib\.nuget\packages\emptyfiles\2.3.2\contentFiles\any\any\EmptyFiles\image\empty.dib" />
+    <Content Remove="D:\BoydenLib\.nuget\packages\emptyfiles\2.3.2\contentFiles\any\any\EmptyFiles\image\empty.emf" />
+    <Content Remove="D:\BoydenLib\.nuget\packages\emptyfiles\2.3.2\contentFiles\any\any\EmptyFiles\image\empty.exif" />
+    <Content Remove="D:\BoydenLib\.nuget\packages\emptyfiles\2.3.2\contentFiles\any\any\EmptyFiles\image\empty.gif" />
+    <Content Remove="D:\BoydenLib\.nuget\packages\emptyfiles\2.3.2\contentFiles\any\any\EmptyFiles\image\empty.heic" />
+    <Content Remove="D:\BoydenLib\.nuget\packages\emptyfiles\2.3.2\contentFiles\any\any\EmptyFiles\image\empty.heif" />
+    <Content Remove="D:\BoydenLib\.nuget\packages\emptyfiles\2.3.2\contentFiles\any\any\EmptyFiles\image\empty.ico" />
+    <Content Remove="D:\BoydenLib\.nuget\packages\emptyfiles\2.3.2\contentFiles\any\any\EmptyFiles\image\empty.j2c" />
+    <Content Remove="D:\BoydenLib\.nuget\packages\emptyfiles\2.3.2\contentFiles\any\any\EmptyFiles\image\empty.jfif" />
+    <Content Remove="D:\BoydenLib\.nuget\packages\emptyfiles\2.3.2\contentFiles\any\any\EmptyFiles\image\empty.jp2" />
+    <Content Remove="D:\BoydenLib\.nuget\packages\emptyfiles\2.3.2\contentFiles\any\any\EmptyFiles\image\empty.jpc" />
+    <Content Remove="D:\BoydenLib\.nuget\packages\emptyfiles\2.3.2\contentFiles\any\any\EmptyFiles\image\empty.jpe" />
+    <Content Remove="D:\BoydenLib\.nuget\packages\emptyfiles\2.3.2\contentFiles\any\any\EmptyFiles\image\empty.jpg" />
+    <Content Remove="D:\BoydenLib\.nuget\packages\emptyfiles\2.3.2\contentFiles\any\any\EmptyFiles\image\empty.jxr" />
+    <Content Remove="D:\BoydenLib\.nuget\packages\emptyfiles\2.3.2\contentFiles\any\any\EmptyFiles\image\empty.pbm" />
+    <Content Remove="D:\BoydenLib\.nuget\packages\emptyfiles\2.3.2\contentFiles\any\any\EmptyFiles\image\empty.pcx" />
+    <Content Remove="D:\BoydenLib\.nuget\packages\emptyfiles\2.3.2\contentFiles\any\any\EmptyFiles\image\empty.pgm" />
+    <Content Remove="D:\BoydenLib\.nuget\packages\emptyfiles\2.3.2\contentFiles\any\any\EmptyFiles\image\empty.png" />
+    <Content Remove="D:\BoydenLib\.nuget\packages\emptyfiles\2.3.2\contentFiles\any\any\EmptyFiles\image\empty.ppm" />
+    <Content Remove="D:\BoydenLib\.nuget\packages\emptyfiles\2.3.2\contentFiles\any\any\EmptyFiles\image\empty.rle" />
+    <Content Remove="D:\BoydenLib\.nuget\packages\emptyfiles\2.3.2\contentFiles\any\any\EmptyFiles\image\empty.tga" />
+    <Content Remove="D:\BoydenLib\.nuget\packages\emptyfiles\2.3.2\contentFiles\any\any\EmptyFiles\image\empty.tif" />
+    <Content Remove="D:\BoydenLib\.nuget\packages\emptyfiles\2.3.2\contentFiles\any\any\EmptyFiles\image\empty.wdp" />
+    <Content Remove="D:\BoydenLib\.nuget\packages\emptyfiles\2.3.2\contentFiles\any\any\EmptyFiles\image\empty.webp" />
+    <Content Remove="D:\BoydenLib\.nuget\packages\emptyfiles\2.3.2\contentFiles\any\any\EmptyFiles\image\empty.wmp" />
+    <Content Remove="D:\BoydenLib\.nuget\packages\emptyfiles\2.3.2\contentFiles\any\any\EmptyFiles\sheet\empty.ods" />
+    <Content Remove="D:\BoydenLib\.nuget\packages\emptyfiles\2.3.2\contentFiles\any\any\EmptyFiles\sheet\empty.xlsx" />
+    <Content Remove="D:\BoydenLib\.nuget\packages\emptyfiles\2.3.2\contentFiles\any\any\EmptyFiles\slide\empty.odp" />
+    <Content Remove="D:\BoydenLib\.nuget\packages\emptyfiles\2.3.2\contentFiles\any\any\EmptyFiles\slide\empty.pptx" />
+    <Content Remove="D:\BoydenLib\.nuget\packages\shouldly\4.0.2\contentFiles\any\netstandard2.0\empty.7z" />
+    <Content Remove="D:\BoydenLib\.nuget\packages\shouldly\4.0.2\contentFiles\any\netstandard2.0\empty.avif" />
+    <Content Remove="D:\BoydenLib\.nuget\packages\shouldly\4.0.2\contentFiles\any\netstandard2.0\empty.bmp" />
+    <Content Remove="D:\BoydenLib\.nuget\packages\shouldly\4.0.2\contentFiles\any\netstandard2.0\empty.bz2" />
+    <Content Remove="D:\BoydenLib\.nuget\packages\shouldly\4.0.2\contentFiles\any\netstandard2.0\empty.dds" />
+    <Content Remove="D:\BoydenLib\.nuget\packages\shouldly\4.0.2\contentFiles\any\netstandard2.0\empty.dib" />
+    <Content Remove="D:\BoydenLib\.nuget\packages\shouldly\4.0.2\contentFiles\any\netstandard2.0\empty.docx" />
+    <Content Remove="D:\BoydenLib\.nuget\packages\shouldly\4.0.2\contentFiles\any\netstandard2.0\empty.emf" />
+    <Content Remove="D:\BoydenLib\.nuget\packages\shouldly\4.0.2\contentFiles\any\netstandard2.0\empty.exif" />
+    <Content Remove="D:\BoydenLib\.nuget\packages\shouldly\4.0.2\contentFiles\any\netstandard2.0\empty.gif" />
+    <Content Remove="D:\BoydenLib\.nuget\packages\shouldly\4.0.2\contentFiles\any\netstandard2.0\empty.gz" />
+    <Content Remove="D:\BoydenLib\.nuget\packages\shouldly\4.0.2\contentFiles\any\netstandard2.0\empty.heic" />
+    <Content Remove="D:\BoydenLib\.nuget\packages\shouldly\4.0.2\contentFiles\any\netstandard2.0\empty.heif" />
+    <Content Remove="D:\BoydenLib\.nuget\packages\shouldly\4.0.2\contentFiles\any\netstandard2.0\empty.ico" />
+    <Content Remove="D:\BoydenLib\.nuget\packages\shouldly\4.0.2\contentFiles\any\netstandard2.0\empty.j2c" />
+    <Content Remove="D:\BoydenLib\.nuget\packages\shouldly\4.0.2\contentFiles\any\netstandard2.0\empty.jfif" />
+    <Content Remove="D:\BoydenLib\.nuget\packages\shouldly\4.0.2\contentFiles\any\netstandard2.0\empty.jp2" />
+    <Content Remove="D:\BoydenLib\.nuget\packages\shouldly\4.0.2\contentFiles\any\netstandard2.0\empty.jpc" />
+    <Content Remove="D:\BoydenLib\.nuget\packages\shouldly\4.0.2\contentFiles\any\netstandard2.0\empty.jpe" />
+    <Content Remove="D:\BoydenLib\.nuget\packages\shouldly\4.0.2\contentFiles\any\netstandard2.0\empty.jpg" />
+    <Content Remove="D:\BoydenLib\.nuget\packages\shouldly\4.0.2\contentFiles\any\netstandard2.0\empty.jxr" />
+    <Content Remove="D:\BoydenLib\.nuget\packages\shouldly\4.0.2\contentFiles\any\netstandard2.0\empty.odp" />
+    <Content Remove="D:\BoydenLib\.nuget\packages\shouldly\4.0.2\contentFiles\any\netstandard2.0\empty.ods" />
+    <Content Remove="D:\BoydenLib\.nuget\packages\shouldly\4.0.2\contentFiles\any\netstandard2.0\empty.odt" />
+    <Content Remove="D:\BoydenLib\.nuget\packages\shouldly\4.0.2\contentFiles\any\netstandard2.0\empty.pbm" />
+    <Content Remove="D:\BoydenLib\.nuget\packages\shouldly\4.0.2\contentFiles\any\netstandard2.0\empty.pcx" />
+    <Content Remove="D:\BoydenLib\.nuget\packages\shouldly\4.0.2\contentFiles\any\netstandard2.0\empty.pdf" />
+    <Content Remove="D:\BoydenLib\.nuget\packages\shouldly\4.0.2\contentFiles\any\netstandard2.0\empty.pgm" />
+    <Content Remove="D:\BoydenLib\.nuget\packages\shouldly\4.0.2\contentFiles\any\netstandard2.0\empty.png" />
+    <Content Remove="D:\BoydenLib\.nuget\packages\shouldly\4.0.2\contentFiles\any\netstandard2.0\empty.ppm" />
+    <Content Remove="D:\BoydenLib\.nuget\packages\shouldly\4.0.2\contentFiles\any\netstandard2.0\empty.pptx" />
+    <Content Remove="D:\BoydenLib\.nuget\packages\shouldly\4.0.2\contentFiles\any\netstandard2.0\empty.rle" />
+    <Content Remove="D:\BoydenLib\.nuget\packages\shouldly\4.0.2\contentFiles\any\netstandard2.0\empty.rtf" />
+    <Content Remove="D:\BoydenLib\.nuget\packages\shouldly\4.0.2\contentFiles\any\netstandard2.0\empty.tar" />
+    <Content Remove="D:\BoydenLib\.nuget\packages\shouldly\4.0.2\contentFiles\any\netstandard2.0\empty.tga" />
+    <Content Remove="D:\BoydenLib\.nuget\packages\shouldly\4.0.2\contentFiles\any\netstandard2.0\empty.tif" />
+    <Content Remove="D:\BoydenLib\.nuget\packages\shouldly\4.0.2\contentFiles\any\netstandard2.0\empty.wdp" />
+    <Content Remove="D:\BoydenLib\.nuget\packages\shouldly\4.0.2\contentFiles\any\netstandard2.0\empty.webp" />
+    <Content Remove="D:\BoydenLib\.nuget\packages\shouldly\4.0.2\contentFiles\any\netstandard2.0\empty.wmp" />
+    <Content Remove="D:\BoydenLib\.nuget\packages\shouldly\4.0.2\contentFiles\any\netstandard2.0\empty.xlsx" />
+    <Content Remove="D:\BoydenLib\.nuget\packages\shouldly\4.0.2\contentFiles\any\netstandard2.0\empty.zip" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Faker.Net" Version="1.5.136" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.5.0" />
+    <PackageReference Include="Shouldly" Version="4.0.2" />
+    <PackageReference Include="xunit" Version="2.4.0" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.0" />
+    <PackageReference Include="coverlet.collector" Version="1.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ByProject.UtilLib\ByProject.UtilLib.csproj" />
+  </ItemGroup>
+
+</Project>
