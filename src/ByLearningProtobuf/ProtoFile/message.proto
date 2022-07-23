@@ -1,0 +1,8 @@
+﻿syntax = "proto3"; 
+import "google/protobuf/any.proto";
+
+message Message{
+	int32 ID = 1;
+	string Info = 2;
+	google.protobuf.Any data = 3;
+}
