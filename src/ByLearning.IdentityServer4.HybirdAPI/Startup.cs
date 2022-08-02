@@ -1,15 +1,10 @@
-using ByLearning.IdentityServer4.Extendsions;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace ByLearning.IdentityServer4
+namespace ByLearning.IdentityServer4.HybirdAPI
 {
     public class Startup
     {
@@ -17,14 +12,17 @@ namespace ByLearning.IdentityServer4
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc();
-            services.AddIdentityServer(options =>
-            {
-                //配置IdentityServer4的IdentityServerOptions
-            })
-            .AddInitDevelopInfo()
-            .AddDeveloperSigningCredential();
-            services.ConfigureNonBreakingSameSiteCookies();
+            services.AddControllersWithViews();
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme);
+            services.AddAuthentication("Bearer")
+                    .AddIdentityServerAuthentication(options =>
+                    {
+                        options.Authority = "http://localhost:5000";
+                        options.RequireHttpsMetadata = false;
+                        options.ApiName = "ApiScope1";
+                        options.ApiSecret = "apipwd"; //对应ApiResources中的密钥
+                    });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -35,26 +33,17 @@ namespace ByLearning.IdentityServer4
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseStaticFiles();
-
             app.UseRouting();
-            app.UseCookiePolicy();
             app.UseAuthentication();
             app.UseAuthorization();
-            app.UseIdentityServer();
-
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapDefaultControllerRoute();
+                //endpoints.MapGet("/", async context =>
+                //{
+                //    await context.Response.WriteAsync("Hello World!");
+                //});
             });
-
-            //app.UseEndpoints(endpoints =>
-            //{
-            //    endpoints.MapGet("/", async context =>
-            //    {
-            //        await context.Response.WriteAsync("Hello World!");
-            //    });
-            //});
         }
     }
 }
