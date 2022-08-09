@@ -2,10 +2,6 @@
 using Jwks.Manager;
 using Microsoft.AspNetCore.DataProtection;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace IdentityServer4.SSO.WebUI.Configuration
 {
@@ -21,7 +17,7 @@ namespace IdentityServer4.SSO.WebUI.Configuration
             // But if you go to Kubernetes, docker swarm or even nginx lb scenarios you'll get problems with Unprocted ticket failed every time a second instance start
             // The same for IdentityServer4 default config. By default it don't support a second instance, because jwks will change.
             // These components prevents it.
-            // For more options of key material, look at Jp.UI.SSO/Configuration/SigingCredentialExtension.cs
+            // For more options of key material, look at IdentityServer4.SSO.WebUI/Configuration/SigingCredentialExtension.cs
 
             // Dataprotection for ASP.NET. It'll save keys at database 
             builder.Services.AddDataProtection().SetApplicationName("sso").PersistKeysToDbContext<SSOContext>();

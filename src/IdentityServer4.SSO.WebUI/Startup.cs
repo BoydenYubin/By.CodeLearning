@@ -54,7 +54,7 @@ namespace IdentityServer4.SSO.WebUI
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
             // The following line enables Application Insights telemetry collection.
-            //services.AddApplicationInsightsTelemetry();
+            services.AddApplicationInsightsTelemetry();
 
             // Add localization
             //services.AddMvcLocalization();

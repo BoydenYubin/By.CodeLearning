@@ -1,13 +1,45 @@
-﻿using Microsoft.AspNetCore.Hosting;
+﻿using IdentityServer4.Stores;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
+using System.Threading.Tasks;
 
 namespace IdentityServer4.SSO.WebUI.Util
 {
     public static class Extensions
     {
+        public static string GetValue(this List<Claim> claims, params string[] type)
+        {
+            var claim = claims.FirstOrDefault(f => type.Contains(f.Type));
+            return claim?.Value;
+        }
+        public static void Remove(this List<Claim> claims, params string[] type)
+        {
+            claims.RemoveAll(f => type.Contains(f.Type));
+        }
+        public static bool ExistType(this List<Claim> claims, params string[] type)
+        {
+            var claim = claims.FirstOrDefault(f => type.Contains(f.Type));
+            return claim != null;
+        }
+        /// <summary>
+        /// Determines whether the client is configured to use PKCE.
+        /// </summary>
+        /// <param name="store">The store.</param>
+        /// <param name="client_id">The client identifier.</param>
+        /// <returns></returns>
+        public static async Task<bool> IsPkceClientAsync(this IClientStore store, string client_id)
+        {
+            if (!string.IsNullOrWhiteSpace(client_id))
+            {
+                var client = await store.FindEnabledClientByIdAsync(client_id);
+                return client?.RequirePkce == true;
+            }
+
+            return false;
+        }
         public static void AddIfDontExist(this List<Claim> claims, Claim newClaim)
         {
             if (claims.Any(c => c.Type == newClaim.Type))
