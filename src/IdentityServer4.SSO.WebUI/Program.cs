@@ -1,4 +1,6 @@
+using IdentityServer4.SSO.WebUI.Configuration;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Serilog;
 using Serilog.Events;
@@ -30,6 +32,7 @@ namespace IdentityServer4.SSO.WebUI
             var host = CreateHostBuilder(args).Build();
 
             //Seed Data part
+            Task.WaitAll(DbMigrationHelpers.EnsureSeedData(serviceScope: host.Services.CreateScope()));
 
             await host.RunAsync();
         }
