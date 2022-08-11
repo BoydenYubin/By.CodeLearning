@@ -1,13 +1,13 @@
 ﻿using AspNetCore.IQueryable.Extensions;
 using AspNetCore.IQueryable.Extensions.Filter;
 using AutoMapper;
+using ByLearning.DDD.Domain.Core.ViewModels;
 using ByLearning.Domain.Core.Interfaces;
 using ByLearning.SSO.Application.AutoMapper;
 using ByLearning.SSO.Application.EventSourcedNormalizers;
 using ByLearning.SSO.Application.Interfaces;
 using ByLearning.SSO.Domain.Interfaces;
 using ByLearning.SSO.Domain.Models;
-using Identityserver4.SSO.Application.ViewModels.Common;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;

@@ -1,11 +1,10 @@
-﻿using ByLearning.Domain.Core.ViewModels;
+﻿using ByLearning.DDD.Domain.Core.ViewModels;
 using ByLearning.SSO.Application.EventSourcedNormalizers;
 using ByLearning.SSO.Application.ViewModels;
 using ByLearning.SSO.Application.ViewModels.RoleViewModels;
 using ByLearning.SSO.Application.ViewModels.UserViewModels;
 using ByLearning.SSO.Domain.Interfaces;
 using ByLearning.SSO.Domain.ViewModels.User;
-using Identityserver4.SSO.Application.ViewModels.Common;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;

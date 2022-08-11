@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
+using ByLearning.DDD.Domain.Core.ViewModels;
 using ByLearning.Domain.Core.Bus.Abstract;
 using ByLearning.Domain.Core.Interfaces;
-using ByLearning.Domain.Core.ViewModels;
 using ByLearning.SSO.Application.AutoMapper;
 using ByLearning.SSO.Application.EventSourcedNormalizers;
 using ByLearning.SSO.Application.Interfaces;
@@ -13,7 +13,6 @@ using ByLearning.SSO.Domain.Commands.UserManagement;
 using ByLearning.SSO.Domain.Interfaces;
 using ByLearning.SSO.Domain.ViewModels;
 using ByLearning.SSO.Domain.ViewModels.User;
-using Identityserver4.SSO.Application.ViewModels.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;

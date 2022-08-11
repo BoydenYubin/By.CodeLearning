@@ -2,7 +2,7 @@
 using AspNetCore.IQueryable.Extensions.Filter;
 using AspNetCore.IQueryable.Extensions.Pagination;
 using AspNetCore.IQueryable.Extensions.Sort;
-using Identityserver4.SSO.Application.ViewModels.Common;
+using ByLearning.DDD.Domain.Core.ViewModels;
 
 namespace ByLearning.SSO.Application.ViewModels.EventsViewModel
 {
