@@ -5,12 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AspNetCore.IQueryable.Extensions" Version="3.1.6" />
     <PackageReference Include="FluentValidation" Version="11.0.0" />
     <PackageReference Include="MediatR" Version="10.0.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="ViewModels\" />
     <Folder Include="Util\" />
   </ItemGroup>
 
