@@ -1,8 +1,8 @@
-﻿using ByLearning.Domain.Core.Bus.Abstract;
+﻿using ByLearning.DDD.Domain.Core.ViewModels;
+using ByLearning.Domain.Core.Bus.Abstract;
 using ByLearning.Domain.Core.Interfaces;
 using ByLearning.Domain.Core.Notifications;
 using ByLearning.Domain.Core.Util;
-using ByLearning.Domain.Core.ViewModels;
 using ByLearning.SSO.Application.Interfaces;
 using ByLearning.SSO.Application.ViewModels;
 using ByLearning.SSO.Application.ViewModels.UserViewModels;

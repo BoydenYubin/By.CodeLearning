@@ -1,5 +1,4 @@
 ﻿using System;
-using ByLearning.Domain.Core.ViewModels;
 
 namespace ByLearning.Domain.Core.Interfaces
 {

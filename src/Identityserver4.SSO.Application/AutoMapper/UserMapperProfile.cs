@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
+using ByLearning.DDD.Domain.Core.ViewModels;
 using ByLearning.Domain.Core.Events;
 using ByLearning.Domain.Core.Interfaces;
-using ByLearning.Domain.Core.ViewModels;
 using ByLearning.SSO.Application.EventSourcedNormalizers;
 using ByLearning.SSO.Application.ViewModels;
 using ByLearning.SSO.Application.ViewModels.UserViewModels;
