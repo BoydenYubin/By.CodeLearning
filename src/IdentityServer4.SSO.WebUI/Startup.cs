@@ -91,6 +91,9 @@ namespace IdentityServer4.SSO.WebUI
                 // Unless you really know what are you doing, change it.
                 .SetupKeyMaterial();                      //---------------- added by JPP project author
 
+            // 为了解决登陆后无法跳转的问题
+            //services.ConfigureNonBreakingSameSiteCookies();
+
             // SSO Configuration
             services
                 .ConfigureSSO<AspNetUser>()

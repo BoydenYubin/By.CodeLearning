@@ -3,7 +3,7 @@
     "IdentityServer4.Admin.WebAPI": {
       "commandName": "Project",
       "launchBrowser": true,
-      "applicationUrl": "http://localhost:4300",
+      "applicationUrl": "https://localhost:4300",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }

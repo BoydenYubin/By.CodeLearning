@@ -53,6 +53,9 @@ namespace IdentityServer4.Admin.WebAPI
             // configure auth Server
             services.ConfigureOAuth2Server(Configuration);
 
+            // 为了解决登陆后无法跳转的问题
+            //services.ConfigureNonBreakingSameSiteCookies();
+
             // configure openapi
             // services.AddSwagger(Configuration);
 
@@ -88,7 +91,7 @@ namespace IdentityServer4.Admin.WebAPI
                 app.UseHsts();
                 app.UseHttpsRedirection();
             }
-
+            //app.UseStaticFiles();
             app.UseDefaultCors();
             app.UseDeveloperExceptionPage();
             app.UseRouting();
