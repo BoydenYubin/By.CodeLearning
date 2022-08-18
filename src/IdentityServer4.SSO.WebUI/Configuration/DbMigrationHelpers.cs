@@ -1,13 +1,18 @@
 ﻿using ByLearning.EntityFrameworkCore.MigrationHelper;
 using ByLearning.SSO.AspNetIdentity.Models.Identity;
+using ByLearning.SSO.Domain.Models;
+using IdentityServer4.EntityFramework.Entities;
 using IdentityServer4.EntityFramework.Mappers;
 using IdentityServer4.SSO.Database.Context;
+using IdentityServer4.SSO.WebUI.Util;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
+using System.IO;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -46,7 +51,7 @@ namespace IdentityServer4.SSO.WebUI.Configuration
                 //暂时注释掉相关seed数据
                 await EnsureSeedIdentityServerData(ssoContext, configuration);
                 await EnsureSeedIdentityData(userManager, roleManager, configuration);
-                //await EnsureSeedGlobalConfigurationData(ssoContext, configuration, env);
+                await EnsureSeedGlobalConfigurationData(ssoContext, configuration, env);
             }
         }
 
@@ -86,6 +91,120 @@ namespace IdentityServer4.SSO.WebUI.Configuration
 
                 await context.SaveChangesAsync();
             }
+        }
+
+        private static async Task EnsureSeedGlobalConfigurationData(SSOContext context, IConfiguration configuration, IWebHostEnvironment env)
+        {
+            var ssoVersion = context.GlobalConfigurationSettings.FirstOrDefault(w => w.Key == "SSO:Version");
+            SSOVersion.Current = new Version(ssoVersion?.Value ?? "3.1.1");
+
+            if (!context.GlobalConfigurationSettings.Any())
+            {
+                await context.GlobalConfigurationSettings.AddAsync(new GlobalConfigurationSettings("SSO:Version", "3.1.1", false, true));
+                await context.GlobalConfigurationSettings.AddAsync(new GlobalConfigurationSettings("SendEmail", configuration.GetSection("EmailConfiguration:SendEmail").Value, false, false));
+                //await context.GlobalConfigurationSettings.AddAsync(new GlobalConfigurationSettings("UseStorage", configuration.GetSection("Storage:UseStorage").Value, false, false));
+
+                await context.GlobalConfigurationSettings.AddAsync(new GlobalConfigurationSettings("Smtp:Server", configuration.GetSection("EmailConfiguration:SmtpServer").Value, false, false));
+                await context.GlobalConfigurationSettings.AddAsync(new GlobalConfigurationSettings("Smtp:Port", configuration.GetSection("EmailConfiguration:SmtpPort").Value, false, false));
+                await context.GlobalConfigurationSettings.AddAsync(new GlobalConfigurationSettings("Smtp:UseSsl", configuration.GetSection("EmailConfiguration:UseSsl").Value, false, false));
+                await context.GlobalConfigurationSettings.AddAsync(new GlobalConfigurationSettings("Smtp:Username", configuration.GetSection("EmailConfiguration:SmtpUsername").Value, true, false));
+                await context.GlobalConfigurationSettings.AddAsync(new GlobalConfigurationSettings("Smtp:Password", configuration.GetSection("EmailConfiguration:SmtpPassword").Value, true, false));
+
+                //await context.GlobalConfigurationSettings.AddAsync(new GlobalConfigurationSettings("Storage:Service", configuration.GetSection("Storage:Service").Value, false, false));
+                //await context.GlobalConfigurationSettings.AddAsync(new GlobalConfigurationSettings("Storage:VirtualPath", configuration.GetSection("Storage:VirtualPath").Value, false, false));
+                //await context.GlobalConfigurationSettings.AddAsync(new GlobalConfigurationSettings("Storage:Username", configuration.GetSection("Storage:Username").Value, true, false));
+                //await context.GlobalConfigurationSettings.AddAsync(new GlobalConfigurationSettings("Storage:Password", configuration.GetSection("Storage:Password").Value, true, false));
+                //await context.GlobalConfigurationSettings.AddAsync(new GlobalConfigurationSettings("Storage:StorageName", configuration.GetSection("Storage:StorageName").Value, false, false));
+                //await context.GlobalConfigurationSettings.AddAsync(new GlobalConfigurationSettings("Storage:BasePath", configuration.GetSection("Storage:BasePath").Value, false, false));
+                //await context.GlobalConfigurationSettings.AddAsync(new GlobalConfigurationSettings("Storage:PhysicalPath", env.WebRootPath, false, false));
+                //await context.GlobalConfigurationSettings.AddAsync(new GlobalConfigurationSettings("Storage:Region", configuration.GetSection("Storage:Region").Value, false, false));
+
+                await context.SaveChangesAsync();
+            }
+
+            if (!context.Emails.Any())
+            {
+                var newUserEmail = File.ReadAllText(Path.Combine(env.ContentRootPath, @"Assets/templates/new-user-email.html"));
+                var resetPasswordEmail = File.ReadAllText(Path.Combine(env.ContentRootPath, @"Assets/templates/reset-password-email.html"));
+                var template = File.ReadAllText(Path.Combine(env.ContentRootPath, @"Assets/templates/default-template.html"));
+
+                await context.Emails.AddAsync(new Email(newUserEmail, "Welcome to JP Project - Confirm your e-mail", new Sender("no-reply-bypro@hotmail.com", "By Learning"), EmailType.NewUser, null));
+                await context.Emails.AddAsync(new Email(newUserEmail, "Welcome to JP Project - Confirm your e-mail", new Sender("no-reply-bypro@hotmail.com", "By Learning"), EmailType.NewUserWithoutPassword, null));
+                await context.Emails.AddAsync(new Email(resetPasswordEmail, "JP Project - Reset Password", new Sender("no-reply-bypro@hotmail.com", "By Learning"), EmailType.RecoverPassword, null));
+
+                await context.Templates.AddRangeAsync(new Template(template, "JP Team", "default-template", Users.GetEmail(configuration)));
+
+                await context.SaveChangesAsync();
+            }
+
+            if (SSOVersion.Current <= Version.Parse("3.1.1"))
+            {
+                var claims = await context.UserClaims.Where(w => w.ClaimType == "username" || w.ClaimType == "email" || w.ClaimType == "picture").ToListAsync();
+                context.UserClaims.RemoveRange(claims);
+
+                if (context.Clients.Include(c => c.AllowedGrantTypes).Any(s => s.ClientId == "IS4-Admin" && s.AllowedGrantTypes.Any(a => a.GrantType == "implicit")))
+                {
+                    var clientAdmin = context.Clients.Include(c => c.AllowedGrantTypes).FirstOrDefault(s => s.ClientId == "IS4-Admin");
+                    clientAdmin.RequireClientSecret = false;
+                    clientAdmin.AllowedGrantTypes.RemoveAll(a => a.ClientId == clientAdmin.Id);
+                    clientAdmin.AllowedGrantTypes.Add(new ClientGrantType()
+                    {
+                        ClientId = clientAdmin.Id,
+                        GrantType = "authorization_code"
+                    });
+                    context.Update(clientAdmin);
+                }
+                await context.SaveChangesAsync();
+            }
+
+
+            if (SSOVersion.Current == Version.Parse("3.1.1"))
+            {
+                ssoVersion = context.GlobalConfigurationSettings.FirstOrDefault(w => w.Key == "SSO:Version");
+                ssoVersion.Update("3.2.2", true, false);
+                SSOVersion.Current = new Version(ssoVersion.Value);
+                await context.SaveChangesAsync();
+            }
+
+            //if (SSOVersion.Current == Version.Parse("3.2.2"))
+            //{
+            //    await context.GlobalConfigurationSettings.AddAsync(new GlobalConfigurationSettings("UseRecaptcha", configuration.GetSection("Recaptcha:UseRecaptcha").Value, false, true));
+            //    await context.GlobalConfigurationSettings.AddAsync(new GlobalConfigurationSettings("Recaptcha:SiteKey", configuration.GetSection("Recaptcha:SiteKey").Value, false, true));
+            //    await context.GlobalConfigurationSettings.AddAsync(new GlobalConfigurationSettings("Recaptcha:PrivateKey", configuration.GetSection("Recaptcha:PrivateKey").Value, true, false));
+
+            //    ssoVersion = context.GlobalConfigurationSettings.FirstOrDefault(w => w.Key == "SSO:Version");
+            //    ssoVersion.Update("3.2.3", true, false);
+            //    SSOVersion.Current = new Version(ssoVersion.Value);
+            //    await context.SaveChangesAsync();
+            //}
+
+            //if (SSOVersion.Current == Version.Parse("3.2.3"))
+            //{
+            //    await context.GlobalConfigurationSettings.AddAsync(new GlobalConfigurationSettings("Ldap:DomainName", "", false, false));
+            //    await context.GlobalConfigurationSettings.AddAsync(new GlobalConfigurationSettings("Ldap:DistinguishedName", "", false, false));
+            //    await context.GlobalConfigurationSettings.AddAsync(new GlobalConfigurationSettings("Ldap:SearchScope", "", false, false));
+            //    await context.GlobalConfigurationSettings.AddAsync(new GlobalConfigurationSettings("Ldap:Attributes", "", false, false));
+            //    await context.GlobalConfigurationSettings.AddAsync(new GlobalConfigurationSettings("Ldap:AuthType", "", false, false));
+            //    await context.GlobalConfigurationSettings.AddAsync(new GlobalConfigurationSettings("LoginStrategy", "Identity", false, false));
+
+            //    ssoVersion = context.GlobalConfigurationSettings.FirstOrDefault(w => w.Key == "SSO:Version");
+            //    ssoVersion.Update("3.2.4", true, false);
+            //    SSOVersion.Current = new Version(ssoVersion.Value);
+            //    await context.SaveChangesAsync();
+            //}
+
+            //if (SSOVersion.Current == Version.Parse("3.2.4"))
+            //{
+            //    await context.GlobalConfigurationSettings.AddAsync(new GlobalConfigurationSettings("Ldap:FullyQualifiedDomainName", "", false, false));
+            //    await context.GlobalConfigurationSettings.AddAsync(new GlobalConfigurationSettings("Ldap:ConnectionLess", "", false, false));
+            //    await context.GlobalConfigurationSettings.AddAsync(new GlobalConfigurationSettings("Ldap:PortNumber", "389", false, false));
+            //    await context.GlobalConfigurationSettings.AddAsync(new GlobalConfigurationSettings("Ldap:Address", "", false, false));
+
+            //    ssoVersion = context.GlobalConfigurationSettings.FirstOrDefault(w => w.Key == "SSO:Version");
+            //    ssoVersion.Update("3.2.5", true, false);
+            //    SSOVersion.Current = new Version(ssoVersion.Value);
+            //    await context.SaveChangesAsync();
+            //}
         }
 
         /// <summary>

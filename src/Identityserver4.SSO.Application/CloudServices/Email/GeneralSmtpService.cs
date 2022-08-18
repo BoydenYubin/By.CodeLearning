@@ -44,11 +44,11 @@ namespace ByLearning.SSO.Application.CloudServices.Email
             _logger.LogInformation($"Sending e-mail to {message.Email}");
             using (var client = new SmtpClient())
             {
-                client.ServerCertificateValidationCallback = (s, c, h, e) => true;
+                //client.ServerCertificateValidationCallback = (s, c, h, e) => true;
 
-                client.Connect(emailConfiguration.Smtp.Server, emailConfiguration.Smtp.Port, emailConfiguration.Smtp.UseSsl);
-                client.AuthenticationMechanisms.Remove("XOAUTH2");
-                client.Authenticate(emailConfiguration.Smtp.Username, emailConfiguration.Smtp.Password);
+                await client.ConnectAsync(emailConfiguration.Smtp.Server, emailConfiguration.Smtp.Port, emailConfiguration.Smtp.UseSsl);
+                //client.AuthenticationMechanisms.Remove("XOAUTH2");
+                await client.AuthenticateAsync(emailConfiguration.Smtp.Username, emailConfiguration.Smtp.Password);
 
                 await client.SendAsync(mimeMessage);
                 client.Disconnect(true);

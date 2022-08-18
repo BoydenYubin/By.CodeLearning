@@ -13,7 +13,8 @@ namespace IdentityServer4.Admin.WebAPI.Configuration
                     policy.RequireAuthenticatedUser());
 
                 options.AddPolicy("Default",
-                    policy => policy.Requirements.Add(new AccountRequirement()));
+                    policy => policy.RequireRole("Administrator")
+                    .Requirements.Add(new AccountRequirement()));
             });
             services.AddSingleton<IAuthorizationHandler, AccountRequirementHandler>();
         }

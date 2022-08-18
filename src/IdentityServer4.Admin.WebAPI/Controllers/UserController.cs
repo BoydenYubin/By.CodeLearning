@@ -63,7 +63,7 @@ namespace IdentityServer4.Admin.WebAPI.Controllers
 
             model.Email = username;
             await _userAppService.ConfirmEmail(model);
-            return Ok();
+            return Ok(true);
         }
 
     }
