@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="ByLearning_Admin_log-20220820.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Hellang.Middleware.ProblemDetails" Version="5.1.0" />
     <PackageReference Include="IdentityServer4.AccessTokenValidation" Version="3.0.0" />
     <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="8.0.1" />
@@ -15,6 +19,7 @@
     <PackageReference Include="Serilog.Sinks.File" Version="5.0.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.5.1" />
     <PackageReference Include="Swashbuckle.AspNetCore.Newtonsoft" Version="5.5.1" />
+	<PackageReference Include="JpProject.AspNetCore.PasswordHasher.Argon2" Version="3.0.3" />
   </ItemGroup>
 
   <ItemGroup>

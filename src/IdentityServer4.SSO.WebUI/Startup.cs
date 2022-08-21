@@ -71,7 +71,8 @@ namespace IdentityServer4.SSO.WebUI
                 .AddDefaultTokenProviders();
 
             // Improve Identity password security
-            //services.UpgradePasswordSecurity().UseArgon2<UserIdentity>();       //---------------- added by JPP project author
+            // √‹¬Î…¢¡–£®π˛œ££©À„∑®
+            services.UpgradePasswordSecurity().UseArgon2<UserIdentity>();       //---------------- added by JPP project author
 
             // IdentityServer4 Configuration
             services

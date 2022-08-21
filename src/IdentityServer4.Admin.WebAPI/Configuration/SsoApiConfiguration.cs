@@ -40,7 +40,7 @@ namespace IdentityServer4.Admin.WebAPI.Configuration
                 .SetupDefaultIdentityServerContext<SSOContext>();
 
 
-            //services.UpgradePasswordSecurity().UseArgon2<UserIdentity>();
+            services.UpgradePasswordSecurity().UseArgon2<UserIdentity>();
 
             SetupGeneralAuthorizationSettings(services);
 
