@@ -1,0 +1,999 @@
+###客户端Web打开
+[20:24:45 Information] Serilog.AspNetCore.RequestLoggingMiddleware
+HTTP GET /.well-known/openid-configuration responded 200 in 1538.7562 ms
+
+[20:24:45 Information] Serilog.AspNetCore.RequestLoggingMiddleware
+HTTP GET /.well-known/openid-configuration/jwks responded 200 in 67.8965 ms
+
+[20:24:48 Information] Serilog.AspNetCore.RequestLoggingMiddleware
+HTTP GET /connect/authorize responded 302 in 1525.0304 ms
+
+###点击登录按钮
+[20:25:08 Information] Serilog.AspNetCore.RequestLoggingMiddleware
+HTTP GET /connect/authorize responded 302 in 165.0306 ms
+
+[20:25:09 Information] Serilog.AspNetCore.RequestLoggingMiddleware
+HTTP GET /Account/Login responded 200 in 798.2172 ms
+
+###输入账户密码后点击登录
+###Step1
+[20:26:24 Information] Serilog.AspNetCore.RequestLoggingMiddleware
+HTTP POST /Account/Login responded 302 in 8330.7065 ms
+
+###Step2
+[20:26:24 Information] Serilog.AspNetCore.RequestLoggingMiddleware
+HTTP GET /connect/authorize/callback responded 302 in 358.6736 ms
+
+###Step3
+[20:26:27 Information] Serilog.AspNetCore.RequestLoggingMiddleware
+HTTP GET /.well-known/openid-configuration responded 200 in 81.2893 ms
+
+###Step4
+[20:26:27 Information] Serilog.AspNetCore.RequestLoggingMiddleware
+HTTP GET /.well-known/openid-configuration/jwks responded 200 in 21.5613 ms
+
+###Step5
+[20:26:29 Information] Serilog.AspNetCore.RequestLoggingMiddleware
+HTTP POST /connect/token responded 200 in 770.2066 ms
+
+###Step6
+[20:26:29 Information] Serilog.AspNetCore.RequestLoggingMiddleware
+HTTP GET /connect/checksession responded 200 in 11.9226 ms
+
+###Step7
+[20:26:29 Information] Serilog.AspNetCore.RequestLoggingMiddleware
+HTTP OPTIONS /connect/userinfo responded 204 in 13.3803 ms
+
+###Step8
+[20:26:29 Information] Serilog.AspNetCore.RequestLoggingMiddleware
+HTTP GET /connect/userinfo responded 200 in 610.9359 ms
+
+###Step9
+[20:26:30 Information] Serilog.AspNetCore.RequestLoggingMiddleware
+HTTP GET /connect/userinfo responded 200 in 498.8301 ms
+
+###查看数据
+[20:27:05 Information] Serilog.AspNetCore.RequestLoggingMiddleware
+HTTP GET /.well-known/openid-configuration responded 200 in 48.3170 ms
+
+[20:27:05 Information] Serilog.AspNetCore.RequestLoggingMiddleware
+HTTP GET /.well-known/openid-configuration/jwks responded 200 in 3.8765 ms
+
+[20:27:29 Information] Serilog.AspNetCore.RequestLoggingMiddleware
+HTTP GET /connect/endsession responded 302 in 149.1012 ms
+
+###Logout登录退出
+[20:27:29 Information] Serilog.AspNetCore.RequestLoggingMiddleware
+HTTP GET /Account/Logout responded 200 in 156.5277 ms
+
+[20:27:29 Information] Serilog.AspNetCore.RequestLoggingMiddleware
+HTTP GET /images/brand/logo.png responded 404 in 3.4446 ms
+
+[20:27:29 Information] Serilog.AspNetCore.RequestLoggingMiddleware
+HTTP GET /images/brand/logo-min.png responded 404 in 3.4502 ms
+
+[20:27:31 Information] Serilog.AspNetCore.RequestLoggingMiddleware
+HTTP POST /Account/Logout responded 200 in 85.7851 ms
+
+[20:27:31 Information] Serilog.AspNetCore.RequestLoggingMiddleware
+HTTP GET /connect/endsession/callback responded 200 in 123.2716 ms
+---------------------------------------------------------------------------------------------
+### IDentityServer4 服务启动
+[20:24:20 Debug] Microsoft.Extensions.Hosting.Internal.Host
+Hosting starting
+[20:24:20 Debug] Microsoft.Extensions.DependencyInjection.TokenCleanupHost
+Starting grant removal
+[20:24:20 Information] IdentityServer4.Startup
+Starting IdentityServer4 version 3.1.3.0
+[20:24:20 Information] IdentityServer4.Startup
+Using the default authentication scheme Identity.Application for IdentityServer
+[20:24:20 Debug] IdentityServer4.Startup
+Using Identity.Application as default ASP.NET Core scheme for authentication
+[20:24:20 Debug] IdentityServer4.Startup
+Using Identity.External as default ASP.NET Core scheme for sign-in
+[20:24:20 Debug] IdentityServer4.Startup
+Using Identity.External as default ASP.NET Core scheme for sign-out
+[20:24:20 Debug] IdentityServer4.Startup
+Using Identity.Application as default ASP.NET Core scheme for challenge
+[20:24:20 Debug] IdentityServer4.Startup
+Using Identity.Application as default ASP.NET Core scheme for forbid
+[20:24:22 Debug] Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServer
+Failed to locate the development https certificate at 'null'.
+[20:24:22 Debug] Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServer
+Using development certificate: CN=localhost (Thumbprint: 2BEB99658392CBD9E1223CEADC100058DBF65C50)
+[20:24:22 Information] Microsoft.Hosting.Lifetime
+Now listening on: https://localhost:5000
+[20:24:22 Debug] Microsoft.AspNetCore.Hosting.Diagnostics
+Loaded hosting startup assembly IdentityServer4.SSO.WebUI
+[20:24:22 Information] Microsoft.Hosting.Lifetime
+Hosting environment: Development
+[20:24:22 Debug] Microsoft.Extensions.Hosting.Internal.Host
+Hosting started
+[20:24:43 Debug] Microsoft.AspNetCore.Server.Kestrel
+Connection id "0HMK4755IB6L7" accepted.
+--------------------------------------------------------------------------------------------------------
+### 客户端Web打开 Step1
+### [20:24:45 Information] Serilog.AspNetCore.RequestLoggingMiddleware
+### HTTP GET /.well-known/openid-configuration responded 200 in 1538.7562 ms
+[20:24:43 Information] Microsoft.AspNetCore.Hosting.Diagnostics
+Request starting HTTP/2 GET https://localhost:5000/.well-known/openid-configuration  
+[20:24:43 Debug] Microsoft.AspNetCore.HostFiltering.HostFilteringMiddleware
+Wildcard detected, all requests with hosts will be allowed.
+[20:24:43 Debug] IdentityServer4.Hosting.CorsPolicyProvider
+CORS request made for path: /.well-known/openid-configuration from origin: http://localhost:4300
+[20:24:44 Debug] IdentityServer4.EntityFramework.Services.CorsPolicyService
+Origin http://localhost:4300 is allowed: true
+[20:24:44 Debug] IdentityServer4.Hosting.CorsPolicyProvider
+CorsPolicyService allowed origin: http://localhost:4300
+[20:24:44 Debug] Microsoft.AspNetCore.Cors.Infrastructure.CorsService
+The request has an origin header: 'http://localhost:4300'.
+[20:24:44 Information] Microsoft.AspNetCore.Cors.Infrastructure.CorsService
+CORS policy execution successful.
+[20:24:44 Debug] IdentityServer4.Startup
+Login Url: /Account/Login
+[20:24:44 Debug] IdentityServer4.Startup
+Login Return Url Parameter: ReturnUrl
+[20:24:44 Debug] IdentityServer4.Startup
+Logout Url: /Account/Logout
+[20:24:44 Debug] IdentityServer4.Startup
+ConsentUrl Url: /consent
+[20:24:44 Debug] IdentityServer4.Startup
+Consent Return Url Parameter: returnUrl
+[20:24:44 Debug] IdentityServer4.Startup
+Error Url: /home/error
+[20:24:44 Debug] IdentityServer4.Startup
+Error Id Parameter: errorId
+[20:24:44 Debug] Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationHandler
+AuthenticationScheme: Identity.Application was not authenticated.
+[20:24:44 Debug] Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationHandler
+AuthenticationScheme: Identity.Application was not authenticated.
+[20:24:44 Debug] IdentityServer4.Hosting.EndpointRouter
+Request path /.well-known/openid-configuration matched to endpoint type Discovery
+[20:24:44 Debug] IdentityServer4.Hosting.EndpointRouter
+Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+[20:24:44 Information] IdentityServer4.Hosting.IdentityServerMiddleware
+Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+[20:24:44 Debug] IdentityServer4.Endpoints.DiscoveryEndpoint
+Start discovery request
+[20:24:45 Debug] IdentityServer4.EntityFramework.Stores.ResourceStore
+Found ["username","email","profile","openid","role","is4-rights","jp_api.is4","jp_api.user"] as all scopes in database
+[20:24:45 Information] Microsoft.AspNetCore.Hosting.Diagnostics
+Request finished in 1610.9308ms 200 application/json; charset=UTF-8
+------------------------------------------------------------------------------------------------------------------------------
+### 客户端Web打开 Step2
+### [20:24:45 Information] Serilog.AspNetCore.RequestLoggingMiddleware
+### HTTP GET /.well-known/openid-configuration/jwks responded 200 in 67.8965 ms
+[20:24:45 Information] Microsoft.AspNetCore.Hosting.Diagnostics
+Request starting HTTP/2 GET https://localhost:5000/.well-known/openid-configuration/jwks  
+[20:24:45 Debug] IdentityServer4.Hosting.CorsPolicyProvider
+CORS request made for path: /.well-known/openid-configuration/jwks from origin: http://localhost:4300
+[20:24:45 Debug] IdentityServer4.EntityFramework.Services.CorsPolicyService
+Origin http://localhost:4300 is allowed: true
+[20:24:45 Debug] IdentityServer4.Hosting.CorsPolicyProvider
+CorsPolicyService allowed origin: http://localhost:4300
+[20:24:45 Debug] Microsoft.AspNetCore.Cors.Infrastructure.CorsService
+The request has an origin header: 'http://localhost:4300'.
+[20:24:45 Information] Microsoft.AspNetCore.Cors.Infrastructure.CorsService
+CORS policy execution successful.
+[20:24:45 Debug] Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationHandler
+AuthenticationScheme: Identity.Application was not authenticated.
+[20:24:45 Debug] Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationHandler
+AuthenticationScheme: Identity.Application was not authenticated.
+[20:24:45 Debug] IdentityServer4.Hosting.EndpointRouter
+Request path /.well-known/openid-configuration/jwks matched to endpoint type Discovery
+[20:24:45 Debug] IdentityServer4.Hosting.EndpointRouter
+Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryKeyEndpoint
+[20:24:45 Information] IdentityServer4.Hosting.IdentityServerMiddleware
+Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryKeyEndpoint for /.well-known/openid-configuration/jwks
+[20:24:45 Debug] IdentityServer4.Endpoints.DiscoveryKeyEndpoint
+Start key discovery request
+[20:24:45 Information] Microsoft.AspNetCore.Hosting.Diagnostics
+Request finished in 71.8743ms 200 application/jwk-set+json; charset=UTF-8
+--------------------------------------------------------------------------------------------------------------------------
+### 客户端Web打开 Step3
+### [20:24:48 Information] Serilog.AspNetCore.RequestLoggingMiddleware
+### HTTP GET /connect/authorize responded 302 in 1525.0304 ms
+[20:24:46 Debug] Microsoft.AspNetCore.Server.Kestrel
+Connection id "0HMK4755IB6L8" accepted.
+[20:24:46 Debug] Microsoft.AspNetCore.Server.Kestrel
+Connection id "0HMK4755IB6L8" started.
+[20:24:46 Information] Microsoft.AspNetCore.Hosting.Diagnostics
+Request starting HTTP/2 GET https://localhost:5000/connect/authorize?response_type=code&client_id=IS4-Admin&state=UHd6bnV-WWhvSUJsd2VOVW1IYXpCV3kzVTA5V0MxbXN4ekZ0d29DRURLakc1&redirect_uri=http%3A%2F%2Flocalhost%3A4300%2Fsilent-refresh.html&scope=openid%20profile%20email%20jp_api.is4&code_challenge=daOq9LoyLXZhACO5dfWmErPfKA8TCrejRz40x4qjcRU&code_challenge_method=S256&nonce=UHd6bnV-WWhvSUJsd2VOVW1IYXpCV3kzVTA5V0MxbXN4ekZ0d29DRURLakc1&prompt=none  
+[20:24:46 Debug] Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationHandler
+AuthenticationScheme: Identity.Application was not authenticated.
+[20:24:46 Debug] Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationHandler
+AuthenticationScheme: Identity.Application was not authenticated.
+[20:24:46 Debug] IdentityServer4.Hosting.EndpointRouter
+Request path /connect/authorize matched to endpoint type Authorize
+[20:24:46 Debug] IdentityServer4.Hosting.EndpointRouter
+Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeEndpoint
+[20:24:46 Information] IdentityServer4.Hosting.IdentityServerMiddleware
+Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeEndpoint for /connect/authorize
+[20:24:46 Debug] IdentityServer4.Endpoints.AuthorizeEndpoint
+Start authorize request
+[20:24:46 Debug] Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationHandler
+AuthenticationScheme: Identity.Application was not authenticated.
+[20:24:46 Debug] IdentityServer4.Endpoints.AuthorizeEndpoint
+No user present in authorize request
+[20:24:46 Debug] IdentityServer4.Validation.AuthorizeRequestValidator
+Start authorize request protocol validation
+[20:24:47 Debug] IdentityServer4.EntityFramework.Stores.ClientStore
+IS4-Admin found in database: true
+[20:24:47 Debug] IdentityServer4.Stores.ValidatingClientStore
+client configuration validation for client IS4-Admin succeeded.
+[20:24:47 Debug] IdentityServer4.Validation.AuthorizeRequestValidator
+Checking for PKCE parameters
+[20:24:47 Debug] IdentityServer4.EntityFramework.Stores.ResourceStore
+Found ["email","profile","openid"] identity scopes in database
+[20:24:47 Debug] IdentityServer4.EntityFramework.Stores.ResourceStore
+Found ["jp_api.is4","jp_api.user"] API scopes in database
+[20:24:47 Debug] IdentityServer4.EntityFramework.Stores.ResourceStore
+Found ["email","profile","openid"] identity scopes in database
+[20:24:47 Debug] IdentityServer4.EntityFramework.Stores.ResourceStore
+Found ["jp_api.is4","jp_api.user"] API scopes in database
+[20:24:47 Debug] IdentityServer4.Validation.AuthorizeRequestValidator
+Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+
+[20:24:47 Debug] IdentityServer4.Endpoints.AuthorizeEndpoint
+ValidatedAuthorizeRequest
+{"ClientId":"IS4-Admin","ClientName":"IS4-Admin","RedirectUri":"http://localhost:4300/silent-refresh.html","AllowedRedirectUris":["http://localhost:4300/login-callback","http://localhost:4300/silent-refresh.html"],"SubjectId":"anonymous","ResponseType":"code","ResponseMode":"query","GrantType":"authorization_code","RequestedScopes":"openid profile email jp_api.is4","State":"UHd6bnV-WWhvSUJsd2VOVW1IYXpCV3kzVTA5V0MxbXN4ekZ0d29DRURLakc1","UiLocales":null,"Nonce":"UHd6bnV-WWhvSUJsd2VOVW1IYXpCV3kzVTA5V0MxbXN4ekZ0d29DRURLakc1","AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":"none","MaxAge":null,"LoginHint":null,"SessionId":"","Raw":{"response_type":"code","client_id":"IS4-Admin","state":"UHd6bnV-WWhvSUJsd2VOVW1IYXpCV3kzVTA5V0MxbXN4ekZ0d29DRURLakc1","redirect_uri":"http://localhost:4300/silent-refresh.html","scope":"openid profile email jp_api.is4","code_challenge":"daOq9LoyLXZhACO5dfWmErPfKA8TCrejRz40x4qjcRU","code_challenge_method":"S256","nonce":"UHd6bnV-WWhvSUJsd2VOVW1IYXpCV3kzVTA5V0MxbXN4ekZ0d29DRURLakc1","prompt":"none"},"$type":"AuthorizeRequestValidationLog"}
+
+[20:24:47 Information] IdentityServer4.ResponseHandling.AuthorizeInteractionResponseGenerator
+Showing error: prompt=none was requested but user is not authenticated
+
+[20:24:47 Information] IdentityServer4.Endpoints.AuthorizeEndpoint
+{"ClientId":"IS4-Admin","ClientName":"IS4-Admin","RedirectUri":"http://localhost:4300/silent-refresh.html","AllowedRedirectUris":["http://localhost:4300/login-callback","http://localhost:4300/silent-refresh.html"],"SubjectId":"anonymous","ResponseType":"code","ResponseMode":"query","GrantType":"authorization_code","RequestedScopes":"openid profile email jp_api.is4","State":"UHd6bnV-WWhvSUJsd2VOVW1IYXpCV3kzVTA5V0MxbXN4ekZ0d29DRURLakc1","UiLocales":null,"Nonce":"UHd6bnV-WWhvSUJsd2VOVW1IYXpCV3kzVTA5V0MxbXN4ekZ0d29DRURLakc1","AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":"none","MaxAge":null,"LoginHint":null,"SessionId":"","Raw":{"response_type":"code","client_id":"IS4-Admin","state":"UHd6bnV-WWhvSUJsd2VOVW1IYXpCV3kzVTA5V0MxbXN4ekZ0d29DRURLakc1","redirect_uri":"http://localhost:4300/silent-refresh.html","scope":"openid profile email jp_api.is4","code_challenge":"daOq9LoyLXZhACO5dfWmErPfKA8TCrejRz40x4qjcRU","code_challenge_method":"S256","nonce":"UHd6bnV-WWhvSUJsd2VOVW1IYXpCV3kzVTA5V0MxbXN4ekZ0d29DRURLakc1","prompt":"none"},"$type":"AuthorizeRequestValidationLog"}
+
+[20:24:48 Information] Microsoft.AspNetCore.Hosting.Diagnostics
+Request finished in 1528.9962ms 302 
+-----------------------------------------------------------------------------------------------------------------------------------
+[20:25:08 Information] Microsoft.AspNetCore.Hosting.Diagnostics
+Request starting HTTP/2 GET https://localhost:5000/connect/authorize?response_type=code&client_id=IS4-Admin&state=QzJIVE83Z0YzMkNBWjAxT1dRTlo4UEUzRkpaMXU5QUJzVlB2TE9-SVh4eFpmsemicolon%252Flogin-callback&redirect_uri=http%3A%2F%2Flocalhost%3A4300%2Flogin-callback&scope=openid%20profile%20email%20jp_api.is4&code_challenge=60JQ8EfFfbM_t4ftFwlEoJIqORSOmY6JFG3NOKSRjLE&code_challenge_method=S256&nonce=QzJIVE83Z0YzMkNBWjAxT1dRTlo4UEUzRkpaMXU5QUJzVlB2TE9-SVh4eFpm  
+[20:25:08 Debug] Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationHandler
+AuthenticationScheme: Identity.Application was not authenticated.
+[20:25:08 Debug] Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationHandler
+AuthenticationScheme: Identity.Application was not authenticated.
+[20:25:08 Debug] IdentityServer4.Hosting.EndpointRouter
+Request path /connect/authorize matched to endpoint type Authorize
+[20:25:08 Debug] IdentityServer4.Hosting.EndpointRouter
+Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeEndpoint
+[20:25:08 Information] IdentityServer4.Hosting.IdentityServerMiddleware
+Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeEndpoint for /connect/authorize
+[20:25:08 Debug] IdentityServer4.Endpoints.AuthorizeEndpoint
+Start authorize request
+[20:25:08 Debug] Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationHandler
+AuthenticationScheme: Identity.Application was not authenticated.
+[20:25:08 Debug] IdentityServer4.Endpoints.AuthorizeEndpoint
+No user present in authorize request
+[20:25:08 Debug] IdentityServer4.Validation.AuthorizeRequestValidator
+Start authorize request protocol validation
+[20:25:08 Debug] IdentityServer4.EntityFramework.Stores.ClientStore
+IS4-Admin found in database: true
+[20:25:08 Debug] IdentityServer4.Stores.ValidatingClientStore
+client configuration validation for client IS4-Admin succeeded.
+[20:25:08 Debug] IdentityServer4.Validation.AuthorizeRequestValidator
+Checking for PKCE parameters
+[20:25:08 Debug] IdentityServer4.EntityFramework.Stores.ResourceStore
+Found ["email","profile","openid"] identity scopes in database
+[20:25:08 Debug] IdentityServer4.EntityFramework.Stores.ResourceStore
+Found ["jp_api.is4","jp_api.user"] API scopes in database
+[20:25:08 Debug] IdentityServer4.EntityFramework.Stores.ResourceStore
+Found ["email","profile","openid"] identity scopes in database
+[20:25:08 Debug] IdentityServer4.EntityFramework.Stores.ResourceStore
+Found ["jp_api.is4","jp_api.user"] API scopes in database
+[20:25:08 Debug] IdentityServer4.Validation.AuthorizeRequestValidator
+Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+[20:25:08 Debug] IdentityServer4.Endpoints.AuthorizeEndpoint
+ValidatedAuthorizeRequest
+{"ClientId":"IS4-Admin","ClientName":"IS4-Admin","RedirectUri":"http://localhost:4300/login-callback","AllowedRedirectUris":["http://localhost:4300/login-callback","http://localhost:4300/silent-refresh.html"],"SubjectId":"anonymous","ResponseType":"code","ResponseMode":"query","GrantType":"authorization_code","RequestedScopes":"openid profile email jp_api.is4","State":"QzJIVE83Z0YzMkNBWjAxT1dRTlo4UEUzRkpaMXU5QUJzVlB2TE9-SVh4eFpmsemicolon%2Flogin-callback","UiLocales":null,"Nonce":"QzJIVE83Z0YzMkNBWjAxT1dRTlo4UEUzRkpaMXU5QUJzVlB2TE9-SVh4eFpm","AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":"","Raw":{"response_type":"code","client_id":"IS4-Admin","state":"QzJIVE83Z0YzMkNBWjAxT1dRTlo4UEUzRkpaMXU5QUJzVlB2TE9-SVh4eFpmsemicolon%2Flogin-callback","redirect_uri":"http://localhost:4300/login-callback","scope":"openid profile email jp_api.is4","code_challenge":"60JQ8EfFfbM_t4ftFwlEoJIqORSOmY6JFG3NOKSRjLE","code_challenge_method":"S256","nonce":"QzJIVE83Z0YzMkNBWjAxT1dRTlo4UEUzRkpaMXU5QUJzVlB2TE9-SVh4eFpm"},"$type":"AuthorizeRequestValidationLog"}
+[20:25:08 Information] IdentityServer4.ResponseHandling.AuthorizeInteractionResponseGenerator
+Showing login: User is not authenticated
+[20:25:08 Information] Microsoft.AspNetCore.Hosting.Diagnostics
+Request finished in 168.957ms 302 
+-------------------------------------------------------------------------------------------------------------
+[20:25:08 Information] Microsoft.AspNetCore.Hosting.Diagnostics
+Request starting HTTP/2 GET https://localhost:5000/Account/Login?ReturnUrl=%2Fconnect%2Fauthorize%2Fcallback%3Fresponse_type%3Dcode%26client_id%3DIS4-Admin%26state%3DQzJIVE83Z0YzMkNBWjAxT1dRTlo4UEUzRkpaMXU5QUJzVlB2TE9-SVh4eFpmsemicolon%25252Flogin-callback%26redirect_uri%3Dhttp%253A%252F%252Flocalhost%253A4300%252Flogin-callback%26scope%3Dopenid%2520profile%2520email%2520jp_api.is4%26code_challenge%3D60JQ8EfFfbM_t4ftFwlEoJIqORSOmY6JFG3NOKSRjLE%26code_challenge_method%3DS256%26nonce%3DQzJIVE83Z0YzMkNBWjAxT1dRTlo4UEUzRkpaMXU5QUJzVlB2TE9-SVh4eFpm  
+[20:25:08 Debug] Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationHandler
+AuthenticationScheme: Identity.Application was not authenticated.
+[20:25:08 Debug] Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationHandler
+AuthenticationScheme: Identity.Application was not authenticated.
+[20:25:08 Debug] Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationHandler
+AuthenticationScheme: Identity.Application was not authenticated.
+[20:25:08 Debug] IdentityServer4.Validation.AuthorizeRequestValidator
+Start authorize request protocol validation
+[20:25:08 Debug] IdentityServer4.EntityFramework.Stores.ClientStore
+IS4-Admin found in database: true
+[20:25:08 Debug] IdentityServer4.Stores.ValidatingClientStore
+client configuration validation for client IS4-Admin succeeded.
+[20:25:08 Debug] IdentityServer4.Validation.AuthorizeRequestValidator
+Checking for PKCE parameters
+[20:25:08 Debug] IdentityServer4.EntityFramework.Stores.ResourceStore
+Found ["email","profile","openid"] identity scopes in database
+[20:25:08 Debug] IdentityServer4.EntityFramework.Stores.ResourceStore
+Found ["jp_api.is4","jp_api.user"] API scopes in database
+[20:25:08 Debug] IdentityServer4.EntityFramework.Stores.ResourceStore
+Found ["email","profile","openid"] identity scopes in database
+[20:25:08 Debug] IdentityServer4.EntityFramework.Stores.ResourceStore
+Found ["jp_api.is4","jp_api.user"] API scopes in database
+[20:25:08 Debug] IdentityServer4.Validation.AuthorizeRequestValidator
+Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+[20:25:08 Debug] IdentityServer4.EntityFramework.Stores.ClientStore
+IS4-Admin found in database: true
+[20:25:08 Debug] IdentityServer4.Stores.ValidatingClientStore
+client configuration validation for client IS4-Admin succeeded.
+[20:25:08 Debug] Microsoft.Extensions.Localization.ResourceManagerStringLocalizer
+ResourceManagerStringLocalizer searched for 'Title-Login' in 'IdentityServer4.SSO.WebUI.Resources.Views.Account.Login' with culture 'zh-CN'.
+[20:25:08 Debug] Microsoft.AspNetCore.Antiforgery.DefaultAntiforgery
+A new antiforgery cookie token was created.
+[20:25:09 Debug] Microsoft.Extensions.Localization.ResourceManagerStringLocalizer
+ResourceManagerStringLocalizer searched for 'Body-RememberLogin' in 'IdentityServer4.SSO.WebUI.Resources.Views.Account.Login' with culture 'zh-CN'.
+[20:25:09 Debug] Microsoft.Extensions.Localization.ResourceManagerStringLocalizer
+ResourceManagerStringLocalizer searched for 'Body-Login' in 'IdentityServer4.SSO.WebUI.Resources.Views.Account.Login' with culture 'zh-CN'.
+[20:25:09 Debug] Microsoft.Extensions.Localization.ResourceManagerStringLocalizer
+ResourceManagerStringLocalizer searched for 'Body-Forgot' in 'IdentityServer4.SSO.WebUI.Resources.Views.Account.Login' with culture 'zh-CN'.
+[20:25:09 Debug] Microsoft.Extensions.Localization.ResourceManagerStringLocalizer
+ResourceManagerStringLocalizer searched for 'Body-Sign-up' in 'IdentityServer4.SSO.WebUI.Resources.Views.Account.Login' with culture 'zh-CN'.
+[20:25:09 Debug] Microsoft.Extensions.Localization.ResourceManagerStringLocalizer
+ResourceManagerStringLocalizer searched for 'Body-Register-now' in 'IdentityServer4.SSO.WebUI.Resources.Views.Account.Login' with culture 'zh-CN'.
+[20:25:09 Information] Microsoft.AspNetCore.Hosting.Diagnostics
+Request finished in 804.8119ms 200 text/html; charset=utf-8
+------------------------------------------------------------------------------------------------------------------------------
+[20:26:16 Information] Microsoft.AspNetCore.Hosting.Diagnostics
+Request starting HTTP/2 POST https://localhost:5000/Account/Login?ReturnUrl=%2Fconnect%2Fauthorize%2Fcallback%3Fresponse_type%3Dcode%26client_id%3DIS4-Admin%26state%3DQzJIVE83Z0YzMkNBWjAxT1dRTlo4UEUzRkpaMXU5QUJzVlB2TE9-SVh4eFpmsemicolon%25252Flogin-callback%26redirect_uri%3Dhttp%253A%252F%252Flocalhost%253A4300%252Flogin-callback%26scope%3Dopenid%2520profile%2520email%2520jp_api.is4%26code_challenge%3D60JQ8EfFfbM_t4ftFwlEoJIqORSOmY6JFG3NOKSRjLE%26code_challenge_method%3DS256%26nonce%3DQzJIVE83Z0YzMkNBWjAxT1dRTlo4UEUzRkpaMXU5QUJzVlB2TE9-SVh4eFpm application/x-www-form-urlencoded 259
+[20:26:16 Debug] IdentityServer4.Hosting.CorsPolicyProvider
+CORS request made for path: /Account/Login from origin: null but was ignored because path was not for an allowed IdentityServer CORS endpoint
+[20:26:16 Information] Microsoft.AspNetCore.Cors.Infrastructure.CorsMiddleware
+No CORS policy found for the specified request.
+[20:26:16 Debug] Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationHandler
+AuthenticationScheme: Identity.Application was not authenticated.
+[20:26:16 Debug] Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationHandler
+AuthenticationScheme: Identity.Application was not authenticated.
+[20:26:16 Debug] Microsoft.AspNetCore.Server.Kestrel
+Connection id "0HMK4755IB6L8", Request id "0HMK4755IB6L8:00000007": started reading request body.
+[20:26:16 Debug] Microsoft.AspNetCore.Server.Kestrel
+Connection id "0HMK4755IB6L8", Request id "0HMK4755IB6L8:00000007": done reading request body.
+[20:26:16 Debug] Microsoft.AspNetCore.Antiforgery.DefaultAntiforgery
+Antiforgery successfully validated a request.
+[20:26:16 Debug] Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationHandler
+AuthenticationScheme: Identity.Application was not authenticated.
+[20:26:16 Debug] IdentityServer4.Validation.AuthorizeRequestValidator
+Start authorize request protocol validation
+[20:26:16 Debug] IdentityServer4.EntityFramework.Stores.ClientStore
+IS4-Admin found in database: true
+[20:26:16 Debug] IdentityServer4.Stores.ValidatingClientStore
+client configuration validation for client IS4-Admin succeeded.
+[20:26:16 Debug] IdentityServer4.Validation.AuthorizeRequestValidator
+Checking for PKCE parameters
+[20:26:16 Debug] IdentityServer4.EntityFramework.Stores.ResourceStore
+Found ["email","profile","openid"] identity scopes in database
+[20:26:16 Debug] IdentityServer4.EntityFramework.Stores.ResourceStore
+Found ["jp_api.is4","jp_api.user"] API scopes in database
+[20:26:16 Debug] IdentityServer4.EntityFramework.Stores.ResourceStore
+Found ["email","profile","openid"] identity scopes in database
+[20:26:16 Debug] IdentityServer4.EntityFramework.Stores.ResourceStore
+Found ["jp_api.is4","jp_api.user"] API scopes in database
+[20:26:16 Debug] IdentityServer4.Validation.AuthorizeRequestValidator
+Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+[20:26:24 Debug] IdentityServer4.Hosting.IdentityServerAuthenticationService
+Augmenting SignInContext
+[20:26:24 Debug] IdentityServer4.Hosting.IdentityServerAuthenticationService
+Adding idp claim with value: local
+[20:26:24 Debug] IdentityServer4.Hosting.IdentityServerAuthenticationService
+Adding auth_time claim with value: 1661171184
+[20:26:24 Debug] Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationHandler
+AuthenticationScheme: Identity.Application was not authenticated.
+[20:26:24 Information] Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationHandler
+AuthenticationScheme: Identity.Application signed in.
+[20:26:24 Debug] IdentityServer4.EntityFramework.Stores.ClientStore
+IS4-Admin found in database: true
+[20:26:24 Debug] IdentityServer4.Stores.ValidatingClientStore
+client configuration validation for client IS4-Admin succeeded.
+[20:26:24 Information] Microsoft.AspNetCore.Hosting.Diagnostics
+Request finished in 8335.4249ms 302 
+------------------------------------------------------------------------------------------------------------------------
+[20:26:24 Information] Microsoft.AspNetCore.Hosting.Diagnostics
+Request starting HTTP/2 GET https://localhost:5000/connect/authorize/callback?response_type=code&client_id=IS4-Admin&state=QzJIVE83Z0YzMkNBWjAxT1dRTlo4UEUzRkpaMXU5QUJzVlB2TE9-SVh4eFpmsemicolon%252Flogin-callback&redirect_uri=http%3A%2F%2Flocalhost%3A4300%2Flogin-callback&scope=openid%20profile%20email%20jp_api.is4&code_challenge=60JQ8EfFfbM_t4ftFwlEoJIqORSOmY6JFG3NOKSRjLE&code_challenge_method=S256&nonce=QzJIVE83Z0YzMkNBWjAxT1dRTlo4UEUzRkpaMXU5QUJzVlB2TE9-SVh4eFpm  
+[20:26:24 Debug] Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationHandler
+AuthenticationScheme: Identity.Application was successfully authenticated.
+[20:26:24 Debug] Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationHandler
+AuthenticationScheme: Identity.Application was successfully authenticated.
+[20:26:24 Debug] IdentityServer4.Hosting.EndpointRouter
+Request path /connect/authorize/callback matched to endpoint type Authorize
+[20:26:24 Debug] IdentityServer4.Hosting.EndpointRouter
+Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeCallbackEndpoint
+[20:26:24 Information] IdentityServer4.Hosting.IdentityServerMiddleware
+Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeCallbackEndpoint for /connect/authorize/callback
+[20:26:24 Debug] IdentityServer4.Endpoints.AuthorizeCallbackEndpoint
+Start authorize callback request
+[20:26:24 Debug] IdentityServer4.Endpoints.AuthorizeCallbackEndpoint
+User in authorize request: aa2cca8a-4878-4449-bac7-2784d1625b27
+[20:26:24 Debug] IdentityServer4.Validation.AuthorizeRequestValidator
+Start authorize request protocol validation
+[20:26:24 Debug] IdentityServer4.EntityFramework.Stores.ClientStore
+IS4-Admin found in database: true
+[20:26:24 Debug] IdentityServer4.Stores.ValidatingClientStore
+client configuration validation for client IS4-Admin succeeded.
+[20:26:24 Debug] IdentityServer4.Validation.AuthorizeRequestValidator
+Checking for PKCE parameters
+[20:26:24 Debug] IdentityServer4.EntityFramework.Stores.ResourceStore
+Found ["email","profile","openid"] identity scopes in database
+[20:26:24 Debug] IdentityServer4.EntityFramework.Stores.ResourceStore
+Found ["jp_api.is4","jp_api.user"] API scopes in database
+[20:26:24 Debug] IdentityServer4.EntityFramework.Stores.ResourceStore
+Found ["email","profile","openid"] identity scopes in database
+[20:26:24 Debug] IdentityServer4.EntityFramework.Stores.ResourceStore
+Found ["jp_api.is4","jp_api.user"] API scopes in database
+[20:26:24 Debug] IdentityServer4.Validation.AuthorizeRequestValidator
+Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+[20:26:24 Debug] IdentityServer4.Endpoints.AuthorizeCallbackEndpoint
+ValidatedAuthorizeRequest
+{"ClientId":"IS4-Admin","ClientName":"IS4-Admin","RedirectUri":"http://localhost:4300/login-callback","AllowedRedirectUris":["http://localhost:4300/login-callback","http://localhost:4300/silent-refresh.html"],"SubjectId":"aa2cca8a-4878-4449-bac7-2784d1625b27","ResponseType":"code","ResponseMode":"query","GrantType":"authorization_code","RequestedScopes":"openid profile email jp_api.is4","State":"QzJIVE83Z0YzMkNBWjAxT1dRTlo4UEUzRkpaMXU5QUJzVlB2TE9-SVh4eFpmsemicolon%2Flogin-callback","UiLocales":null,"Nonce":"QzJIVE83Z0YzMkNBWjAxT1dRTlo4UEUzRkpaMXU5QUJzVlB2TE9-SVh4eFpm","AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":"O4J-G1TVR9JnC_DgsgNRLQ","Raw":{"response_type":"code","client_id":"IS4-Admin","state":"QzJIVE83Z0YzMkNBWjAxT1dRTlo4UEUzRkpaMXU5QUJzVlB2TE9-SVh4eFpmsemicolon%2Flogin-callback","redirect_uri":"http://localhost:4300/login-callback","scope":"openid profile email jp_api.is4","code_challenge":"60JQ8EfFfbM_t4ftFwlEoJIqORSOmY6JFG3NOKSRjLE","code_challenge_method":"S256","nonce":"QzJIVE83Z0YzMkNBWjAxT1dRTlo4UEUzRkpaMXU5QUJzVlB2TE9-SVh4eFpm"},"$type":"AuthorizeRequestValidationLog"}
+[20:26:24 Debug] IdentityServer4.EntityFramework.Stores.PersistedGrantStore
+aWGcaKo64XgmKDNswe7DmbsZJQa+WsZNSFRcn9ku6yM= found in database: true
+[20:26:24 Debug] IdentityServer4.Services.DefaultConsentService
+Consent found in consent store is same as current request, consent is not required
+[20:26:24 Debug] IdentityServer4.ResponseHandling.AuthorizeResponseGenerator
+Creating Authorization Code Flow response.
+[20:26:24 Debug] IdentityServer4.EntityFramework.Stores.PersistedGrantStore
+/j8mesbXFuiOcwVmQn+CV/u4obgF6Fetle7Tueddk7Y= not found in database
+[20:26:24 Debug] IdentityServer4.Endpoints.AuthorizeCallbackEndpoint
+Authorize endpoint response
+{"SubjectId":"aa2cca8a-4878-4449-bac7-2784d1625b27","ClientId":"IS4-Admin","RedirectUri":"http://localhost:4300/login-callback","State":"QzJIVE83Z0YzMkNBWjAxT1dRTlo4UEUzRkpaMXU5QUJzVlB2TE9-SVh4eFpmsemicolon%2Flogin-callback","Scope":"openid profile email jp_api.is4","Error":null,"ErrorDescription":null,"$type":"AuthorizeResponseLog"}
+[20:26:24 Debug] IdentityServer4.Hosting.IdentityServerAuthenticationService
+Augmenting SignInContext
+[20:26:24 Information] Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationHandler
+AuthenticationScheme: Identity.Application signed in.
+[20:26:24 Information] Microsoft.AspNetCore.Hosting.Diagnostics
+Request finished in 360.4312ms 302 
+-----------------------------------------------------------------------------------------------------------------
+[20:26:26 Information] Microsoft.AspNetCore.Hosting.Diagnostics
+Request starting HTTP/2 GET https://localhost:5000/.well-known/openid-configuration  
+[20:26:26 Debug] IdentityServer4.Hosting.CorsPolicyProvider
+CORS request made for path: /.well-known/openid-configuration from origin: http://localhost:4300
+[20:26:27 Debug] IdentityServer4.EntityFramework.Services.CorsPolicyService
+Origin http://localhost:4300 is allowed: true
+[20:26:27 Debug] IdentityServer4.Hosting.CorsPolicyProvider
+CorsPolicyService allowed origin: http://localhost:4300
+[20:26:27 Debug] Microsoft.AspNetCore.Cors.Infrastructure.CorsService
+The request has an origin header: 'http://localhost:4300'.
+[20:26:27 Information] Microsoft.AspNetCore.Cors.Infrastructure.CorsService
+CORS policy execution successful.
+[20:26:27 Debug] Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationHandler
+AuthenticationScheme: Identity.Application was not authenticated.
+[20:26:27 Debug] Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationHandler
+AuthenticationScheme: Identity.Application was not authenticated.
+[20:26:27 Debug] IdentityServer4.Hosting.EndpointRouter
+Request path /.well-known/openid-configuration matched to endpoint type Discovery
+[20:26:27 Debug] IdentityServer4.Hosting.EndpointRouter
+Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+[20:26:27 Information] IdentityServer4.Hosting.IdentityServerMiddleware
+Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+[20:26:27 Debug] IdentityServer4.Endpoints.DiscoveryEndpoint
+Start discovery request
+[20:26:27 Debug] IdentityServer4.EntityFramework.Stores.ResourceStore
+Found ["username","email","profile","openid","role","is4-rights","jp_api.is4","jp_api.user"] as all scopes in database
+[20:26:27 Information] Microsoft.AspNetCore.Hosting.Diagnostics
+Request finished in 90.9156ms 200 application/json; charset=UTF-8
+--------------------------------------------------------------------------------------------------------------------
+[20:26:27 Information] Microsoft.AspNetCore.Hosting.Diagnostics
+Request starting HTTP/2 GET https://localhost:5000/.well-known/openid-configuration/jwks  
+[20:26:27 Debug] IdentityServer4.Hosting.CorsPolicyProvider
+CORS request made for path: /.well-known/openid-configuration/jwks from origin: http://localhost:4300
+[20:26:27 Debug] IdentityServer4.EntityFramework.Services.CorsPolicyService
+Origin http://localhost:4300 is allowed: true
+[20:26:27 Debug] IdentityServer4.Hosting.CorsPolicyProvider
+CorsPolicyService allowed origin: http://localhost:4300
+[20:26:27 Debug] Microsoft.AspNetCore.Cors.Infrastructure.CorsService
+The request has an origin header: 'http://localhost:4300'.
+[20:26:27 Information] Microsoft.AspNetCore.Cors.Infrastructure.CorsService
+CORS policy execution successful.
+[20:26:27 Debug] Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationHandler
+AuthenticationScheme: Identity.Application was not authenticated.
+[20:26:27 Debug] Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationHandler
+AuthenticationScheme: Identity.Application was not authenticated.
+[20:26:27 Debug] IdentityServer4.Hosting.EndpointRouter
+Request path /.well-known/openid-configuration/jwks matched to endpoint type Discovery
+[20:26:27 Debug] IdentityServer4.Hosting.EndpointRouter
+Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryKeyEndpoint
+[20:26:27 Information] IdentityServer4.Hosting.IdentityServerMiddleware
+Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryKeyEndpoint for /.well-known/openid-configuration/jwks
+[20:26:27 Debug] IdentityServer4.Endpoints.DiscoveryKeyEndpoint
+Start key discovery request
+[20:26:27 Information] Microsoft.AspNetCore.Hosting.Diagnostics
+Request finished in 24.4348ms 200 application/jwk-set+json; charset=UTF-8
+-----------------------------------------------------------------------------------------------------------------
+[20:26:28 Information] Microsoft.AspNetCore.Hosting.Diagnostics
+Request starting HTTP/2 POST https://localhost:5000/connect/token application/x-www-form-urlencoded 223
+[20:26:28 Debug] IdentityServer4.Hosting.CorsPolicyProvider
+CORS request made for path: /connect/token from origin: http://localhost:4300
+[20:26:28 Debug] IdentityServer4.EntityFramework.Services.CorsPolicyService
+Origin http://localhost:4300 is allowed: true
+[20:26:28 Debug] IdentityServer4.Hosting.CorsPolicyProvider
+CorsPolicyService allowed origin: http://localhost:4300
+[20:26:28 Debug] Microsoft.AspNetCore.Cors.Infrastructure.CorsService
+The request has an origin header: 'http://localhost:4300'.
+[20:26:28 Information] Microsoft.AspNetCore.Cors.Infrastructure.CorsService
+CORS policy execution successful.
+[20:26:28 Debug] Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationHandler
+AuthenticationScheme: Identity.Application was not authenticated.
+[20:26:28 Debug] Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationHandler
+AuthenticationScheme: Identity.Application was not authenticated.
+[20:26:28 Debug] IdentityServer4.Hosting.EndpointRouter
+Request path /connect/token matched to endpoint type Token
+[20:26:28 Debug] IdentityServer4.Hosting.EndpointRouter
+Endpoint enabled: Token, successfully created handler: IdentityServer4.Endpoints.TokenEndpoint
+[20:26:28 Information] IdentityServer4.Hosting.IdentityServerMiddleware
+Invoking IdentityServer endpoint: IdentityServer4.Endpoints.TokenEndpoint for /connect/token
+[20:26:28 Debug] IdentityServer4.Endpoints.TokenEndpoint
+Start token request.
+[20:26:28 Debug] IdentityServer4.Validation.ClientSecretValidator
+Start client validation
+[20:26:28 Debug] IdentityServer4.Validation.BasicAuthenticationSecretParser
+Start parsing Basic Authentication secret
+[20:26:28 Debug] IdentityServer4.Validation.PostBodySecretParser
+Start parsing for secret in post body
+[20:26:28 Debug] Microsoft.AspNetCore.Server.Kestrel
+Connection id "0HMK4755IB6L7", Request id "0HMK4755IB6L7:00000009": started reading request body.
+[20:26:28 Debug] Microsoft.AspNetCore.Server.Kestrel
+Connection id "0HMK4755IB6L7", Request id "0HMK4755IB6L7:00000009": done reading request body.
+[20:26:28 Debug] IdentityServer4.Validation.PostBodySecretParser
+client id without secret found
+[20:26:28 Debug] IdentityServer4.Validation.SecretParser
+Parser found secret: PostBodySecretParser
+[20:26:28 Debug] IdentityServer4.Validation.SecretParser
+Secret id found: IS4-Admin
+[20:26:28 Debug] IdentityServer4.EntityFramework.Stores.ClientStore
+IS4-Admin found in database: true
+[20:26:28 Debug] IdentityServer4.Stores.ValidatingClientStore
+client configuration validation for client IS4-Admin succeeded.
+[20:26:28 Debug] IdentityServer4.Validation.ClientSecretValidator
+Public Client - skipping secret validation success
+[20:26:28 Debug] IdentityServer4.Validation.ClientSecretValidator
+Client validation success
+[20:26:28 Debug] IdentityServer4.Validation.TokenRequestValidator
+Start token request validation
+[20:26:28 Debug] IdentityServer4.Validation.TokenRequestValidator
+Start validation of authorization code token request
+[20:26:28 Debug] IdentityServer4.EntityFramework.Stores.PersistedGrantStore
+/j8mesbXFuiOcwVmQn+CV/u4obgF6Fetle7Tueddk7Y= found in database: true
+[20:26:28 Debug] IdentityServer4.EntityFramework.Stores.PersistedGrantStore
+removing /j8mesbXFuiOcwVmQn+CV/u4obgF6Fetle7Tueddk7Y= persisted grant from database
+[20:26:28 Debug] IdentityServer4.Validation.TokenRequestValidator
+Client required a proof key for code exchange. Starting PKCE validation
+[20:26:28 Debug] IdentityServer4.Validation.TokenRequestValidator
+Validation of authorization code token request success
+[20:26:28 Information] IdentityServer4.Validation.TokenRequestValidator
+Token request validation success, {"ClientId":"IS4-Admin","ClientName":"IS4-Admin","GrantType":"authorization_code","Scopes":null,"AuthorizationCode":"8pqXgvUDHe9GWzmzBWWNDWGdOUysJS3P-2ovz6mrPCk","RefreshToken":null,"UserName":null,"AuthenticationContextReferenceClasses":null,"Tenant":null,"IdP":null,"Raw":{"grant_type":"authorization_code","code":"8pqXgvUDHe9GWzmzBWWNDWGdOUysJS3P-2ovz6mrPCk","redirect_uri":"http://localhost:4300/login-callback","code_verifier":"XzNDeWlBZ3BzLXdoaFk1NGlfUmR3flgwYmFyTU0weUZJU1FYZi16THZCRXAy","client_id":"IS4-Admin"},"$type":"TokenRequestValidationLog"}
+[20:26:28 Debug] IdentityServer4.EntityFramework.Stores.ClientStore
+IS4-Admin found in database: true
+[20:26:28 Debug] IdentityServer4.Stores.ValidatingClientStore
+client configuration validation for client IS4-Admin succeeded.
+[20:26:28 Debug] IdentityServer4.EntityFramework.Stores.ResourceStore
+Found ["email","profile","openid"] identity scopes in database
+[20:26:28 Debug] IdentityServer4.EntityFramework.Stores.ResourceStore
+Found ["jp_api.is4","jp_api.user"] API scopes in database
+[20:26:28 Debug] IdentityServer4.Services.DefaultClaimsService
+Getting claims for access token for client: IS4-Admin
+[20:26:28 Debug] IdentityServer4.Services.DefaultClaimsService
+Getting claims for access token for subject: aa2cca8a-4878-4449-bac7-2784d1625b27
+[20:26:28 Debug] IdentityServer4.EntityFramework.Stores.ResourceStore
+Found ["username","email","profile","openid","role","is4-rights","jp_api.is4","jp_api.user"] as all scopes in database
+[20:26:28 Debug] IdentityServer4.Services.DefaultProfileService
+Get profile called for subject aa2cca8a-4878-4449-bac7-2784d1625b27 from client IS4-Admin with claim types ["role","username","is4-rights","email","email_verified","name","family_name","given_name","middle_name","nickname","preferred_username","profile","picture","website","gender","birthdate","zoneinfo","locale","updated_at","sub","openid"] via ClaimsProviderAccessToken
+[20:26:28 Debug] IdentityServer4.Services.DefaultProfileService
+Issued claims: ["sub","is4-rights","name","given_name","role","preferred_username","email","email_verified","username"]
+[20:26:28 Debug] IdentityServer4.Services.DefaultClaimsService
+Claim types from profile service that were filtered: ["sub"]
+[20:26:28 Debug] IdentityServer4.EntityFramework.Stores.ClientStore
+IS4-Admin found in database: true
+[20:26:28 Debug] IdentityServer4.Stores.ValidatingClientStore
+client configuration validation for client IS4-Admin succeeded.
+[20:26:29 Debug] IdentityServer4.EntityFramework.Stores.ResourceStore
+Found ["email","profile","openid"] identity scopes in database
+[20:26:29 Debug] IdentityServer4.EntityFramework.Stores.ResourceStore
+Found ["jp_api.is4","jp_api.user"] API scopes in database
+[20:26:29 Debug] IdentityServer4.Services.DefaultClaimsService
+Getting claims for identity token for subject: aa2cca8a-4878-4449-bac7-2784d1625b27 and client: IS4-Admin
+[20:26:29 Debug] IdentityServer4.Services.DefaultClaimsService
+In addition to an id_token, an access_token was requested. No claims other than sub are included in the id_token. To obtain more user claims, either use the user info endpoint or set AlwaysIncludeUserClaimsInIdToken on the client configuration.
+[20:26:29 Debug] IdentityServer4.Endpoints.TokenEndpoint
+Token request success.
+[20:26:29 Information] Microsoft.AspNetCore.Hosting.Diagnostics
+Request finished in 773.2099ms 200 application/json; charset=UTF-8
+-----------------------------------------------------------------------------------------------------------------
+[20:26:29 Information] Microsoft.AspNetCore.Hosting.Diagnostics
+Request starting HTTP/2 GET https://localhost:5000/connect/checksession 
+----------------------------------------------------------------------------------------------------------------- 
+[20:26:29 Information] Microsoft.AspNetCore.Hosting.Diagnostics
+Request starting HTTP/2 OPTIONS https://localhost:5000/connect/userinfo  
+[20:26:29 Debug] IdentityServer4.Hosting.CorsPolicyProvider
+CORS request made for path: /connect/userinfo from origin: http://localhost:4300
+[20:26:29 Debug] Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationHandler
+AuthenticationScheme: Identity.Application was successfully authenticated.
+[20:26:29 Debug] Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationHandler
+AuthenticationScheme: Identity.Application was successfully authenticated.
+[20:26:29 Debug] IdentityServer4.Hosting.EndpointRouter
+Request path /connect/checksession matched to endpoint type Checksession
+[20:26:29 Debug] IdentityServer4.Hosting.EndpointRouter
+Endpoint enabled: Checksession, successfully created handler: IdentityServer4.Endpoints.CheckSessionEndpoint
+[20:26:29 Information] IdentityServer4.Hosting.IdentityServerMiddleware
+Invoking IdentityServer endpoint: IdentityServer4.Endpoints.CheckSessionEndpoint for /connect/checksession
+[20:26:29 Debug] IdentityServer4.Endpoints.CheckSessionEndpoint
+Rendering check session result
+[20:26:29 Debug] IdentityServer4.EntityFramework.Services.CorsPolicyService
+Origin http://localhost:4300 is allowed: true
+[20:26:29 Debug] IdentityServer4.Hosting.CorsPolicyProvider
+CorsPolicyService allowed origin: http://localhost:4300
+[20:26:29 Debug] Microsoft.AspNetCore.Cors.Infrastructure.CorsService
+The request has an origin header: 'http://localhost:4300'.
+[20:26:29 Information] Microsoft.AspNetCore.Cors.Infrastructure.CorsService
+CORS policy execution successful.
+[20:26:29 Debug] Microsoft.AspNetCore.Cors.Infrastructure.CorsService
+The request is a preflight request.
+[20:26:29 Information] Microsoft.AspNetCore.Hosting.Diagnostics
+Request finished in 32.5493ms 200 text/html; charset=UTF-8
+-----------------------------------------------------------------------------------------------------------------
+[20:26:29 Information] Microsoft.AspNetCore.Hosting.Diagnostics
+Request finished in 35.8772ms 204 
+-----------------------------------------------------------------------------------------------------------------
+[20:26:29 Information] Microsoft.AspNetCore.Hosting.Diagnostics
+Request starting HTTP/2 GET https://localhost:5000/connect/userinfo  
+[20:26:29 Debug] IdentityServer4.Hosting.CorsPolicyProvider
+CORS request made for path: /connect/userinfo from origin: http://localhost:4300
+[20:26:29 Debug] IdentityServer4.EntityFramework.Services.CorsPolicyService
+Origin http://localhost:4300 is allowed: true
+[20:26:29 Debug] IdentityServer4.Hosting.CorsPolicyProvider
+CorsPolicyService allowed origin: http://localhost:4300
+[20:26:29 Debug] Microsoft.AspNetCore.Cors.Infrastructure.CorsService
+The request has an origin header: 'http://localhost:4300'.
+[20:26:29 Information] Microsoft.AspNetCore.Cors.Infrastructure.CorsService
+CORS policy execution successful.
+[20:26:29 Debug] Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationHandler
+AuthenticationScheme: Identity.Application was not authenticated.
+[20:26:29 Debug] Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationHandler
+AuthenticationScheme: Identity.Application was not authenticated.
+[20:26:29 Debug] IdentityServer4.Hosting.EndpointRouter
+Request path /connect/userinfo matched to endpoint type Userinfo
+[20:26:29 Debug] IdentityServer4.Hosting.EndpointRouter
+Endpoint enabled: Userinfo, successfully created handler: IdentityServer4.Endpoints.UserInfoEndpoint
+[20:26:29 Information] IdentityServer4.Hosting.IdentityServerMiddleware
+Invoking IdentityServer endpoint: IdentityServer4.Endpoints.UserInfoEndpoint for /connect/userinfo
+[20:26:29 Debug] IdentityServer4.Endpoints.UserInfoEndpoint
+Start userinfo request
+[20:26:29 Debug] IdentityServer4.Validation.BearerTokenUsageValidator
+Bearer token found in header
+[20:26:29 Debug] IdentityServer4.EntityFramework.Stores.ClientStore
+IS4-Admin found in database: true
+[20:26:29 Debug] IdentityServer4.Stores.ValidatingClientStore
+client configuration validation for client IS4-Admin succeeded.
+[20:26:29 Debug] IdentityServer4.EntityFramework.Stores.ClientStore
+IS4-Admin found in database: true
+[20:26:29 Debug] IdentityServer4.Stores.ValidatingClientStore
+client configuration validation for client IS4-Admin succeeded.
+[20:26:29 Debug] IdentityServer4.Validation.TokenValidator
+Calling into custom token validator: IdentityServer4.Validation.DefaultCustomTokenValidator
+[20:26:29 Debug] IdentityServer4.Validation.TokenValidator
+Token validation success
+{"ClientId":null,"ClientName":null,"ValidateLifetime":true,"AccessTokenType":"Jwt","ExpectedScope":"openid","TokenHandle":null,"JwtId":null,"Claims":{"nbf":1661171188,"exp":1661174788,"iss":"https://localhost:5000","aud":"jp_api","client_id":"IS4-Admin","sub":"aa2cca8a-4878-4449-bac7-2784d1625b27","auth_time":1661171184,"idp":"local","is4-rights":"manager","name":"boydenyol","given_name":"boydenyol","role":"Administrator","preferred_username":"boydenyol","email":"boydenyol@gmail.com","email_verified":true,"username":"boydenyol","scope":["email","profile","openid","jp_api.is4"],"amr":"pwd"},"$type":"TokenValidationLog"}
+[20:26:29 Debug] IdentityServer4.ResponseHandling.UserInfoResponseGenerator
+Creating userinfo response
+[20:26:29 Debug] IdentityServer4.ResponseHandling.UserInfoResponseGenerator
+Scopes in access token: email profile openid jp_api.is4
+[20:26:29 Debug] IdentityServer4.ResponseHandling.UserInfoResponseGenerator
+Scopes in access token: email profile openid jp_api.is4
+[20:26:29 Debug] IdentityServer4.EntityFramework.Stores.ResourceStore
+Found ["email","profile","openid"] identity scopes in database
+[20:26:29 Debug] IdentityServer4.ResponseHandling.UserInfoResponseGenerator
+Requested claim types: email email_verified name family_name given_name middle_name nickname preferred_username profile picture website gender birthdate zoneinfo locale updated_at sub
+[20:26:29 Debug] IdentityServer4.ResponseHandling.UserInfoResponseGenerator
+Scopes in access token: email profile openid jp_api.is4
+[20:26:29 Debug] IdentityServer4.EntityFramework.Stores.ResourceStore
+Found ["email","profile","openid"] identity scopes in database
+[20:26:29 Debug] IdentityServer4.EntityFramework.Stores.ResourceStore
+Found ["username","email","profile","openid","role","is4-rights","jp_api.is4","jp_api.user"] as all scopes in database
+[20:26:29 Debug] IdentityServer4.Services.DefaultProfileService
+Get profile called for subject aa2cca8a-4878-4449-bac7-2784d1625b27 from client IS4-Admin with claim types ["email","email_verified","name","family_name","given_name","middle_name","nickname","preferred_username","profile","picture","website","gender","birthdate","zoneinfo","locale","updated_at","sub"] via UserInfoEndpoint
+[20:26:29 Debug] IdentityServer4.Services.DefaultProfileService
+Issued claims: ["sub","name","given_name","preferred_username","email","email_verified"]
+[20:26:29 Information] IdentityServer4.ResponseHandling.UserInfoResponseGenerator
+Profile service returned the following claim types: sub name given_name preferred_username email email_verified
+[20:26:29 Debug] IdentityServer4.Endpoints.UserInfoEndpoint
+End userinfo request
+[20:26:29 Information] Microsoft.AspNetCore.Hosting.Diagnostics
+Request finished in 616.4879ms 200 application/json; charset=UTF-8
+-----------------------------------------------------------------------------------------------------------------
+[20:26:29 Information] Microsoft.AspNetCore.Hosting.Diagnostics
+Request starting HTTP/2 GET https://localhost:5000/connect/userinfo  
+[20:26:29 Debug] IdentityServer4.Hosting.CorsPolicyProvider
+CORS request made for path: /connect/userinfo from origin: http://localhost:4300
+[20:26:29 Debug] IdentityServer4.EntityFramework.Services.CorsPolicyService
+Origin http://localhost:4300 is allowed: true
+[20:26:29 Debug] IdentityServer4.Hosting.CorsPolicyProvider
+CorsPolicyService allowed origin: http://localhost:4300
+[20:26:29 Debug] Microsoft.AspNetCore.Cors.Infrastructure.CorsService
+The request has an origin header: 'http://localhost:4300'.
+[20:26:29 Information] Microsoft.AspNetCore.Cors.Infrastructure.CorsService
+CORS policy execution successful.
+[20:26:29 Debug] Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationHandler
+AuthenticationScheme: Identity.Application was not authenticated.
+[20:26:29 Debug] Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationHandler
+AuthenticationScheme: Identity.Application was not authenticated.
+[20:26:29 Debug] IdentityServer4.Hosting.EndpointRouter
+Request path /connect/userinfo matched to endpoint type Userinfo
+[20:26:29 Debug] IdentityServer4.Hosting.EndpointRouter
+Endpoint enabled: Userinfo, successfully created handler: IdentityServer4.Endpoints.UserInfoEndpoint
+[20:26:29 Information] IdentityServer4.Hosting.IdentityServerMiddleware
+Invoking IdentityServer endpoint: IdentityServer4.Endpoints.UserInfoEndpoint for /connect/userinfo
+[20:26:29 Debug] IdentityServer4.Endpoints.UserInfoEndpoint
+Start userinfo request
+[20:26:29 Debug] IdentityServer4.Validation.BearerTokenUsageValidator
+Bearer token found in header
+[20:26:30 Debug] IdentityServer4.EntityFramework.Stores.ClientStore
+IS4-Admin found in database: true
+[20:26:30 Debug] IdentityServer4.Stores.ValidatingClientStore
+client configuration validation for client IS4-Admin succeeded.
+[20:26:30 Debug] IdentityServer4.EntityFramework.Stores.ClientStore
+IS4-Admin found in database: true
+[20:26:30 Debug] IdentityServer4.Stores.ValidatingClientStore
+client configuration validation for client IS4-Admin succeeded.
+[20:26:30 Debug] IdentityServer4.Validation.TokenValidator
+Calling into custom token validator: IdentityServer4.Validation.DefaultCustomTokenValidator
+[20:26:30 Debug] IdentityServer4.Validation.TokenValidator
+Token validation success
+{"ClientId":null,"ClientName":null,"ValidateLifetime":true,"AccessTokenType":"Jwt","ExpectedScope":"openid","TokenHandle":null,"JwtId":null,"Claims":{"nbf":1661171188,"exp":1661174788,"iss":"https://localhost:5000","aud":"jp_api","client_id":"IS4-Admin","sub":"aa2cca8a-4878-4449-bac7-2784d1625b27","auth_time":1661171184,"idp":"local","is4-rights":"manager","name":"boydenyol","given_name":"boydenyol","role":"Administrator","preferred_username":"boydenyol","email":"boydenyol@gmail.com","email_verified":true,"username":"boydenyol","scope":["email","profile","openid","jp_api.is4"],"amr":"pwd"},"$type":"TokenValidationLog"}
+[20:26:30 Debug] IdentityServer4.ResponseHandling.UserInfoResponseGenerator
+Creating userinfo response
+[20:26:30 Debug] IdentityServer4.ResponseHandling.UserInfoResponseGenerator
+Scopes in access token: email profile openid jp_api.is4
+[20:26:30 Debug] IdentityServer4.ResponseHandling.UserInfoResponseGenerator
+Scopes in access token: email profile openid jp_api.is4
+[20:26:30 Debug] IdentityServer4.EntityFramework.Stores.ResourceStore
+Found ["email","profile","openid"] identity scopes in database
+[20:26:30 Debug] IdentityServer4.ResponseHandling.UserInfoResponseGenerator
+Requested claim types: email email_verified name family_name given_name middle_name nickname preferred_username profile picture website gender birthdate zoneinfo locale updated_at sub
+[20:26:30 Debug] IdentityServer4.ResponseHandling.UserInfoResponseGenerator
+Scopes in access token: email profile openid jp_api.is4
+[20:26:30 Debug] IdentityServer4.EntityFramework.Stores.ResourceStore
+Found ["email","profile","openid"] identity scopes in database
+[20:26:30 Debug] IdentityServer4.EntityFramework.Stores.ResourceStore
+Found ["username","email","profile","openid","role","is4-rights","jp_api.is4","jp_api.user"] as all scopes in database
+[20:26:30 Debug] IdentityServer4.Services.DefaultProfileService
+Get profile called for subject aa2cca8a-4878-4449-bac7-2784d1625b27 from client IS4-Admin with claim types ["email","email_verified","name","family_name","given_name","middle_name","nickname","preferred_username","profile","picture","website","gender","birthdate","zoneinfo","locale","updated_at","sub"] via UserInfoEndpoint
+[20:26:30 Debug] IdentityServer4.Services.DefaultProfileService
+Issued claims: ["sub","name","given_name","preferred_username","email","email_verified"]
+[20:26:30 Information] IdentityServer4.ResponseHandling.UserInfoResponseGenerator
+Profile service returned the following claim types: sub name given_name preferred_username email email_verified
+[20:26:30 Debug] IdentityServer4.Endpoints.UserInfoEndpoint
+End userinfo request
+[20:26:30 Information] Microsoft.AspNetCore.Hosting.Diagnostics
+Request finished in 526.134ms 200 application/json; charset=UTF-8
+-----------------------------------------------------------------------------------------------------------------
+[20:26:46 Debug] Microsoft.Extensions.Http.DefaultHttpClientFactory
+HttpMessageHandler expired after 120000ms for client 'JwtRequestUriHttpClient'
+[20:26:56 Debug] Microsoft.Extensions.Http.DefaultHttpClientFactory
+Starting HttpMessageHandler cleanup cycle with 1 items
+[20:26:56 Debug] Microsoft.Extensions.Http.DefaultHttpClientFactory
+Ending HttpMessageHandler cleanup cycle after 0.1631ms - processed: 0 items - remaining: 1 items
+[20:27:05 Debug] Microsoft.AspNetCore.Server.Kestrel
+Connection id "0HMK4755IB6L9" accepted.
+[20:27:05 Debug] Microsoft.AspNetCore.Server.Kestrel
+Connection id "0HMK4755IB6L9" started.
+-----------------------------------------------------------------------------------------------------------------
+[20:27:05 Information] Microsoft.AspNetCore.Hosting.Diagnostics
+Request starting HTTP/1.1 GET https://localhost:5000/.well-known/openid-configuration  
+[20:27:05 Debug] Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationHandler
+AuthenticationScheme: Identity.Application was not authenticated.
+[20:27:05 Debug] Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationHandler
+AuthenticationScheme: Identity.Application was not authenticated.
+[20:27:05 Debug] IdentityServer4.Hosting.EndpointRouter
+Request path /.well-known/openid-configuration matched to endpoint type Discovery
+[20:27:05 Debug] IdentityServer4.Hosting.EndpointRouter
+Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+[20:27:05 Information] IdentityServer4.Hosting.IdentityServerMiddleware
+Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+[20:27:05 Debug] IdentityServer4.Endpoints.DiscoveryEndpoint
+Start discovery request
+[20:27:05 Debug] IdentityServer4.EntityFramework.Stores.ResourceStore
+Found ["username","email","profile","openid","role","is4-rights","jp_api.is4","jp_api.user"] as all scopes in database
+[20:27:05 Debug] Microsoft.AspNetCore.Server.Kestrel
+Connection id "0HMK4755IB6L9" completed keep alive response.
+[20:27:05 Information] Microsoft.AspNetCore.Hosting.Diagnostics
+Request finished in 52.4096ms 200 application/json; charset=UTF-8
+-----------------------------------------------------------------------------------------------------------------
+[20:27:05 Information] Microsoft.AspNetCore.Hosting.Diagnostics
+Request starting HTTP/1.1 GET https://localhost:5000/.well-known/openid-configuration/jwks  
+[20:27:05 Debug] Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationHandler
+AuthenticationScheme: Identity.Application was not authenticated.
+[20:27:05 Debug] Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationHandler
+AuthenticationScheme: Identity.Application was not authenticated.
+[20:27:05 Debug] IdentityServer4.Hosting.EndpointRouter
+Request path /.well-known/openid-configuration/jwks matched to endpoint type Discovery
+[20:27:05 Debug] IdentityServer4.Hosting.EndpointRouter
+Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryKeyEndpoint
+[20:27:05 Information] IdentityServer4.Hosting.IdentityServerMiddleware
+Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryKeyEndpoint for /.well-known/openid-configuration/jwks
+[20:27:05 Debug] IdentityServer4.Endpoints.DiscoveryKeyEndpoint
+Start key discovery request
+[20:27:06 Debug] Microsoft.AspNetCore.Server.Kestrel
+Connection id "0HMK4755IB6L9" completed keep alive response.
+[20:27:06 Information] Microsoft.AspNetCore.Hosting.Diagnostics
+Request finished in 7.2195ms 200 application/jwk-set+json; charset=UTF-8
+-----------------------------------------------------------------------------------------------------------------
+[20:27:06 Debug] Microsoft.Extensions.Http.DefaultHttpClientFactory
+Starting HttpMessageHandler cleanup cycle with 1 items
+[20:27:06 Debug] Microsoft.Extensions.Http.DefaultHttpClientFactory
+Ending HttpMessageHandler cleanup cycle after 0.0092ms - processed: 0 items - remaining: 1 items
+[20:27:16 Debug] Microsoft.Extensions.Http.DefaultHttpClientFactory
+Starting HttpMessageHandler cleanup cycle with 1 items
+[20:27:16 Debug] Microsoft.Extensions.Http.DefaultHttpClientFactory
+Ending HttpMessageHandler cleanup cycle after 0.0135ms - processed: 0 items - remaining: 1 items
+[20:27:26 Debug] Microsoft.Extensions.Http.DefaultHttpClientFactory
+Starting HttpMessageHandler cleanup cycle with 1 items
+[20:27:26 Debug] Microsoft.Extensions.Http.DefaultHttpClientFactory
+Ending HttpMessageHandler cleanup cycle after 0.0168ms - processed: 0 items - remaining: 1 items
+-----------------------------------------------------------------------------------------------------------------
+[20:27:29 Information] Microsoft.AspNetCore.Hosting.Diagnostics
+Request starting HTTP/2 GET https://localhost:5000/connect/endsession?id_token_hint=eyJhbGciOiJQUzI1NiIsImtpZCI6IjZRd05fN3NCS3BILTRCRy1OOFdjRUEiLCJ0eXAiOiJKV1QifQ.eyJuYmYiOjE2NjExNzExODksImV4cCI6MTY2MTE3MTQ4OSwiaXNzIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NTAwMCIsImF1ZCI6IklTNC1BZG1pbiIsIm5vbmNlIjoiUXpKSVZFODNaMFl6TWtOQldqQXhUMWRSVGxvNFVFVXpSa3BhTVhVNVFVSnpWbEIyVEU5LVNWaDRlRnBtIiwiaWF0IjoxNjYxMTcxMTg5LCJhdF9oYXNoIjoiWW5Bd016LVAzd0wtbWdEcUNXZlA5dyIsInNfaGFzaCI6ImVucmVkay1rQW82S3M4MzdsbXE4WUEiLCJzaWQiOiJPNEotRzFUVlI5Sm5DX0Rnc2dOUkxRIiwic3ViIjoiYWEyY2NhOGEtNDg3OC00NDQ5LWJhYzctMjc4NGQxNjI1YjI3IiwiYXV0aF90aW1lIjoxNjYxMTcxMTg0LCJpZHAiOiJsb2NhbCIsImFtciI6WyJwd2QiXX0.VleX80_qy6PJ1GyOGCx2RgJ_Qgcbax6W-o518fxdcQRzTGhGbxQBL0BwMTI9cVu0lYrf09oroSXwZG2-U42-btv2CH2rjc3-5j-nljkUv-EHRsYEJa_XHDNGuASChsvGa16kxyZpqMmZUhwO6NSI1dV43xPrkEDyG8Qy8p5iWKClEGqRDTisDp2Z3jMAm6Ifz1vy26-YXnCtEzwPlVHnveK5wmsLFKsF0rA6HGqSnSZYykrK8-87lQwQJaSCOnv-MHc_X_oq00ZPlZ-Yl2N04BG0bPUFR0lvPH_3uXGQHhWTI7jcrAjobLGY5rSsqfdq-pzHVQGhKCYpg2v36llcig&post_logout_redirect_uri=http://localhost:4300/login-callback  
+[20:27:29 Debug] Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationHandler
+AuthenticationScheme: Identity.Application was successfully authenticated.
+[20:27:29 Debug] Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationHandler
+AuthenticationScheme: Identity.Application was successfully authenticated.
+[20:27:29 Debug] IdentityServer4.Hosting.EndpointRouter
+Request path /connect/endsession matched to endpoint type Endsession
+[20:27:29 Debug] IdentityServer4.Hosting.EndpointRouter
+Endpoint enabled: Endsession, successfully created handler: IdentityServer4.Endpoints.EndSessionEndpoint
+[20:27:29 Information] IdentityServer4.Hosting.IdentityServerMiddleware
+Invoking IdentityServer endpoint: IdentityServer4.Endpoints.EndSessionEndpoint for /connect/endsession
+[20:27:29 Debug] IdentityServer4.Endpoints.EndSessionEndpoint
+Processing signout request for aa2cca8a-4878-4449-bac7-2784d1625b27
+[20:27:29 Debug] IdentityServer4.Validation.EndSessionRequestValidator
+Start end session request validation
+[20:27:29 Debug] IdentityServer4.Validation.TokenValidator
+Start identity token validation
+[20:27:29 Debug] IdentityServer4.EntityFramework.Stores.ClientStore
+IS4-Admin found in database: true
+[20:27:29 Debug] IdentityServer4.Stores.ValidatingClientStore
+client configuration validation for client IS4-Admin succeeded.
+[20:27:29 Debug] IdentityServer4.Validation.TokenValidator
+Client found: IS4-Admin / IS4-Admin
+[20:27:29 Debug] IdentityServer4.Validation.TokenValidator
+Calling into custom token validator: IdentityServer4.Validation.DefaultCustomTokenValidator
+[20:27:29 Debug] IdentityServer4.Validation.TokenValidator
+Token validation success
+{"ClientId":"IS4-Admin","ClientName":"IS4-Admin","ValidateLifetime":false,"AccessTokenType":null,"ExpectedScope":null,"TokenHandle":null,"JwtId":null,"Claims":{"nbf":1661171189,"exp":1661171489,"iss":"https://localhost:5000","aud":"IS4-Admin","nonce":"QzJIVE83Z0YzMkNBWjAxT1dRTlo4UEUzRkpaMXU5QUJzVlB2TE9-SVh4eFpm","iat":1661171189,"at_hash":"YnAwMz-P3wL-mgDqCWfP9w","s_hash":"enredk-kAo6Ks837lmq8YA","sid":"O4J-G1TVR9JnC_DgsgNRLQ","sub":"aa2cca8a-4878-4449-bac7-2784d1625b27","auth_time":1661171184,"idp":"local","amr":"pwd"},"$type":"TokenValidationLog"}
+[20:27:29 Warning] IdentityServer4.Validation.EndSessionRequestValidator
+Invalid PostLogoutRedirectUri: http://localhost:4300/login-callback
+[20:27:29 Information] IdentityServer4.Validation.EndSessionRequestValidator
+End session request validation success
+{"ClientId":"IS4-Admin","ClientName":"IS4-Admin","SubjectId":"aa2cca8a-4878-4449-bac7-2784d1625b27","PostLogOutUri":null,"State":null,"Raw":{"id_token_hint":"***REDACTED***","post_logout_redirect_uri":"http://localhost:4300/login-callback"},"$type":"EndSessionRequestValidationLog"}
+[20:27:29 Debug] IdentityServer4.Endpoints.EndSessionEndpoint
+Success validating end session request from IS4-Admin
+[20:27:29 Information] Microsoft.AspNetCore.Hosting.Diagnostics
+Request finished in 154.1512ms 302 
+-----------------------------------------------------------------------------------------------------------------
+[20:27:29 Information] Microsoft.AspNetCore.Hosting.Diagnostics
+Request starting HTTP/2 GET https://localhost:5000/Account/Logout?logoutId=CfDJ8PjWOgkblWlKmnAGNFAABS79M2uGwsqSfJQHGyHIjrK8D64ZZvHS-DF5YmpGcZhwqxmbMT3UeeDJX5fUVnJBmQQ2-UINRTGt6Kb-y6gVLx8PU_m8RUqJf0klutT4497anGL6ASSjVfv3pGGg1FZlYgFC7T5dbzMeXGrSHhYIHEjJU20neWyagm4aHez48zJd3a-bchl6DkIdkVl9bsPEG7SJjd7e9-5ucQsXxY1W6YdOJ-mx-CVpGnYCaEmnvnnyWEKOGklE3TWnKy5TudJbPh_UF_fNVSZMfpX8dAHs7kf5_GC2jF3wqlagp26o2ebDkHU8vbK4eJLFFr7Sq5AeANpKw7xfqXxhq3keIeXkw6o5OredP3Nmgc8S8K_lJQI7UixUiVmjULU2aONqPPpqtzo  
+[20:27:29 Debug] Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationHandler
+AuthenticationScheme: Identity.Application was successfully authenticated.
+[20:27:29 Debug] Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationHandler
+AuthenticationScheme: Identity.Application was successfully authenticated.
+[20:27:29 Debug] Microsoft.Extensions.Localization.ResourceManagerStringLocalizer
+ResourceManagerStringLocalizer searched for 'Body-IdentityServer' in 'IdentityServer4.SSO.WebUI.Resources.Views.Account.Logout' with culture 'zh-CN'.
+[20:27:29 Debug] Microsoft.AspNetCore.Antiforgery.DefaultAntiforgery
+A new antiforgery cookie token was created.
+[20:27:29 Debug] Microsoft.Extensions.Localization.ResourceManagerStringLocalizer
+ResourceManagerStringLocalizer searched for 'Body-Yes' in 'IdentityServer4.SSO.WebUI.Resources.Views.Account.Logout' with culture 'zh-CN'.
+[20:27:29 Debug] Microsoft.Extensions.Localization.ResourceManagerStringLocalizer
+ResourceManagerStringLocalizer searched for 'Body-No' in 'IdentityServer4.SSO.WebUI.Resources.Views.Account.Logout' with culture 'zh-CN'.
+[20:27:29 Debug] Microsoft.Extensions.Localization.ResourceManagerStringLocalizer
+ResourceManagerStringLocalizer searched for 'Title-Available-Languages' in 'IdentityServer4.SSO.WebUI.Resources.Views.Shared._SelectLanguagePartial' with culture 'zh-CN'.
+[20:27:29 Debug] Microsoft.Extensions.Localization.ResourceManagerStringLocalizer
+ResourceManagerStringLocalizer searched for 'Title-Home' in 'IdentityServer4.SSO.WebUI.Resources.Views.Account.Logout' with culture 'zh-CN'.
+[20:27:29 Debug] Microsoft.Extensions.Localization.ResourceManagerStringLocalizer
+ResourceManagerStringLocalizer searched for 'Body-Logout' in 'IdentityServer4.SSO.WebUI.Resources.Views.Account.Logout' with culture 'zh-CN'.
+[20:27:29 Information] Microsoft.AspNetCore.Hosting.Diagnostics
+Request finished in 160.251ms 200 text/html; charset=utf-8
+-----------------------------------------------------------------------------------------------------------------
+[20:27:29 Information] Microsoft.AspNetCore.Hosting.Diagnostics
+Request starting HTTP/2 GET https://localhost:5000/images/brand/logo.png  
+-----------------------------------------------------------------------------------------------------------------
+[20:27:29 Information] Microsoft.AspNetCore.Hosting.Diagnostics
+Request starting HTTP/2 GET https://localhost:5000/images/brand/logo-min.png  
+[20:27:29 Debug] Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationHandler
+AuthenticationScheme: Identity.Application was successfully authenticated.
+[20:27:29 Debug] Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationHandler
+AuthenticationScheme: Identity.Application was successfully authenticated.
+[20:27:29 Debug] Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationHandler
+AuthenticationScheme: Identity.Application was successfully authenticated.
+[20:27:29 Debug] Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationHandler
+AuthenticationScheme: Identity.Application was successfully authenticated.
+[20:27:29 Information] Microsoft.AspNetCore.Hosting.Diagnostics
+Request finished in 7.4238ms 404 
+-----------------------------------------------------------------------------------------------------------------
+[20:27:29 Information] Microsoft.AspNetCore.Hosting.Diagnostics
+Request finished in 13.3864ms 404 
+-----------------------------------------------------------------------------------------------------------------
+[20:27:31 Information] Microsoft.AspNetCore.Hosting.Diagnostics
+Request starting HTTP/2 POST https://localhost:5000/Account/Logout application/x-www-form-urlencoded 646
+[20:27:31 Debug] IdentityServer4.Hosting.CorsPolicyProvider
+CORS request made for path: /Account/Logout from origin: null but was ignored because path was not for an allowed IdentityServer CORS endpoint
+[20:27:31 Information] Microsoft.AspNetCore.Cors.Infrastructure.CorsMiddleware
+No CORS policy found for the specified request.
+[20:27:31 Debug] Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationHandler
+AuthenticationScheme: Identity.Application was successfully authenticated.
+[20:27:31 Debug] Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationHandler
+AuthenticationScheme: Identity.Application was successfully authenticated.
+[20:27:31 Debug] Microsoft.AspNetCore.Server.Kestrel
+Connection id "0HMK4755IB6L8", Request id "0HMK4755IB6L8:00000015": started reading request body.
+[20:27:31 Debug] Microsoft.AspNetCore.Server.Kestrel
+Connection id "0HMK4755IB6L8", Request id "0HMK4755IB6L8:00000015": done reading request body.
+[20:27:31 Debug] Microsoft.AspNetCore.Antiforgery.DefaultAntiforgery
+Antiforgery successfully validated a request.
+[20:27:31 Information] Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationHandler
+AuthenticationScheme: Identity.Application signed out.
+[20:27:31 Information] Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationHandler
+AuthenticationScheme: Identity.External signed out.
+[20:27:31 Information] Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationHandler
+AuthenticationScheme: Identity.TwoFactorUserId signed out.
+[20:27:31 Debug] Microsoft.Extensions.Localization.ResourceManagerStringLocalizer
+ResourceManagerStringLocalizer searched for 'Title-You-are-now-logged-out' in 'IdentityServer4.SSO.WebUI.Resources.Views.Account.LoggedOut' with culture 'zh-CN'.
+[20:27:31 Debug] Microsoft.Extensions.Localization.ResourceManagerStringLocalizer
+ResourceManagerStringLocalizer searched for 'Body-Click' in 'IdentityServer4.SSO.WebUI.Resources.Views.Account.LoggedOut' with culture 'zh-CN'.
+[20:27:31 Debug] Microsoft.Extensions.Localization.ResourceManagerStringLocalizer
+ResourceManagerStringLocalizer searched for 'Body-here' in 'IdentityServer4.SSO.WebUI.Resources.Views.Account.LoggedOut' with culture 'zh-CN'.
+[20:27:31 Debug] Microsoft.Extensions.Localization.ResourceManagerStringLocalizer
+ResourceManagerStringLocalizer searched for 'Body-to-login' in 'IdentityServer4.SSO.WebUI.Resources.Views.Account.LoggedOut' with culture 'zh-CN'.
+[20:27:31 Information] Microsoft.AspNetCore.Hosting.Diagnostics
+Request finished in 91.7933ms 200 text/html; charset=utf-8
+-----------------------------------------------------------------------------------------------------------------
+[20:27:31 Information] Microsoft.AspNetCore.Hosting.Diagnostics
+Request starting HTTP/2 GET https://localhost:5000/connect/endsession/callback?endSessionId=CfDJ8PjWOgkblWlKmnAGNFAABS4vf9NBaUTlb0J_mSMqBZVM8IKyKh7peGJBJUdDeURRTQGb5Jvx4vMp892wyrecOQ3vVYL_z7KBVDy6uEeFYK08ygpkIaXqzy2glFVuHfsWbks8JNzyr793ANgTvhemynWY2iMNI4JYeHfFn_rVHPxSulpvkP-qo6AjdB4pg8KOPOlyyyFR7qtznQd1Y6U0E-BpbYZEI_3TY9Aqh7tPrjdu8oHpIckROvymVt6sWqP-ZJcsjwIWAQWP6SkKcncHsWqJjYLEChqPEE8nri460XejfLZAoiXSdvl4iAvfHU_8Jg  
+[20:27:31 Debug] Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationHandler
+AuthenticationScheme: Identity.Application was not authenticated.
+[20:27:31 Debug] Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationHandler
+AuthenticationScheme: Identity.Application was not authenticated.
+[20:27:31 Debug] IdentityServer4.Hosting.EndpointRouter
+Request path /connect/endsession/callback matched to endpoint type Endsession
+[20:27:31 Debug] IdentityServer4.Hosting.EndpointRouter
+Endpoint enabled: Endsession, successfully created handler: IdentityServer4.Endpoints.EndSessionCallbackEndpoint
+[20:27:31 Information] IdentityServer4.Hosting.IdentityServerMiddleware
+Invoking IdentityServer endpoint: IdentityServer4.Endpoints.EndSessionCallbackEndpoint for /connect/endsession/callback
+[20:27:31 Debug] IdentityServer4.Endpoints.EndSessionCallbackEndpoint
+Processing signout callback request
+[20:27:31 Debug] IdentityServer4.EntityFramework.Stores.ClientStore
+IS4-Admin found in database: true
+[20:27:31 Debug] IdentityServer4.Stores.ValidatingClientStore
+client configuration validation for client IS4-Admin succeeded.
+[20:27:31 Debug] IdentityServer4.Validation.EndSessionRequestValidator
+No client front-channel logout URLs
+[20:27:31 Debug] IdentityServer4.Validation.EndSessionRequestValidator
+No client back-channel logout URLs
+[20:27:31 Information] IdentityServer4.Endpoints.EndSessionCallbackEndpoint
+Successful signout callback.
+[20:27:31 Debug] IdentityServer4.Endpoints.EndSessionCallbackEndpoint
+No client front-channel iframe urls
+[20:27:31 Debug] IdentityServer4.Endpoints.EndSessionCallbackEndpoint
+No client back-channel iframe urls
+[20:27:31 Information] Microsoft.AspNetCore.Hosting.Diagnostics
+Request finished in 127.4315ms 200 text/html; charset=UTF-8
+-----------------------------------------------------------------------------------------------------------------
+[20:27:36 Debug] Microsoft.Extensions.Http.DefaultHttpClientFactory
+Starting HttpMessageHandler cleanup cycle with 1 items
+[20:27:36 Debug] Microsoft.Extensions.Http.DefaultHttpClientFactory
+Ending HttpMessageHandler cleanup cycle after 0.013ms - processed: 0 items - remaining: 1 items
+[20:27:38 Debug] Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets
+Connection id "0HMK4755IB6L7" received FIN.
+[20:27:38 Debug] Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets
+Connection id "0HMK4755IB6L8" received FIN.
+[20:27:38 Debug] Microsoft.AspNetCore.Server.Kestrel
+Connection id "0HMK4755IB6L7" is closed. The last processed stream ID was 15.
+[20:27:38 Debug] Microsoft.AspNetCore.Server.Kestrel
+Connection id "0HMK4755IB6L8" is closed. The last processed stream ID was 23.
+[20:27:38 Debug] Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets
+Connection id "0HMK4755IB6L7" sending FIN because: "The client closed the connection."
+[20:27:38 Debug] Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets
+Connection id "0HMK4755IB6L8" sending FIN because: "The client closed the connection."
+[20:27:38 Debug] Microsoft.AspNetCore.Server.Kestrel
+Connection id "0HMK4755IB6L7" stopped.
+[20:27:38 Debug] Microsoft.AspNetCore.Server.Kestrel
+Connection id "0HMK4755IB6L8" stopped.

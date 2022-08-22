@@ -42,7 +42,17 @@ namespace IdentityServer4.SSO.WebUI
             return Host.CreateDefaultBuilder(args)
                        .UseSerilog((context, config) =>
                        {
-                           
+                            #if DEBUG
+                           config.MinimumLevel.Debug()
+                            .MinimumLevel.Override("Microsoft.EntityFrameworkCore", LogEventLevel.Warning)
+                            .MinimumLevel.Override("Microsoft.AspNetCore.Mvc",LogEventLevel.Warning)
+                            .MinimumLevel.Override("Microsoft.AspNetCore.Routing", LogEventLevel.Warning)
+                            .MinimumLevel.Override("Microsoft.AspNetCore.StaticFiles", LogEventLevel.Warning)
+                            .MinimumLevel.Override("System", LogEventLevel.Warning)
+                            .Enrich.FromLogContext()
+                            .WriteTo.File("ByLearning_SSO_Core-.txt", outputTemplate: "[{Timestamp:HH:mm:ss} {Level}] {SourceContext}{NewLine}{Message:lj}{NewLine}",
+                           rollingInterval: RollingInterval.Day, fileSizeLimitBytes: 1073741824 / 8);
+                            #endif
                        }, preserveStaticLogger: true)
                        .ConfigureWebHostDefaults(webBuilder =>
                        {
