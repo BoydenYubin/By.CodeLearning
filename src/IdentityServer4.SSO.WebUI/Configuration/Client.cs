@@ -21,9 +21,10 @@ namespace IdentityServer4.SSO.WebUI.Configuration
                     ClientId = "IS4-Admin",
                     ClientName = "IS4-Admin",
                     ClientUri = configuration["ApplicationSettings:IS4AdminUi"],
-                    AllowedGrantTypes = GrantTypes.Code,
-                    RequireConsent = true,
+                    AllowedGrantTypes = GrantTypes.Hybrid,
+                    AlwaysIncludeUserClaimsInIdToken = true,
                     AllowAccessTokensViaBrowser = true,
+                    RequireConsent = true,
                     RequireClientSecret = false,
                     //may need to change
                     RequirePkce = false,

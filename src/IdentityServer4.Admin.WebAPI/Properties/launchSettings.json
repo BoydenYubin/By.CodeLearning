@@ -2,7 +2,7 @@
   "profiles": {
     "IdentityServer4.Admin.WebAPI": {
       "commandName": "Project",
-      "launchBrowser": true,
+      //"launchBrowser": true,
       "applicationUrl": "https://localhost:5002",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
