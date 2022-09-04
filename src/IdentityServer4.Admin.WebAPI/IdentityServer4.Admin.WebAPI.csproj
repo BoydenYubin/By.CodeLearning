@@ -4,6 +4,10 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>C:\source\By.CodeLearning\src\IdentityServer4.Admin.WebAPI\IdentityServer4.Admin.WebAPI.xml</DocumentationFile>
+  </PropertyGroup>
+
   <ItemGroup>
     <None Remove="ByLearning_Admin_log-20220820.txt" />
   </ItemGroup>
