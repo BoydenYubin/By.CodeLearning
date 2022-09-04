@@ -57,7 +57,7 @@ namespace IdentityServer4.Admin.WebAPI
             //services.ConfigureNonBreakingSameSiteCookies();
 
             // configure openapi
-            // services.AddSwagger(Configuration);
+            services.AddSwagger(Configuration);
 
             // Adding MediatR for Domain Events and Notifications
             services.AddMediatR(typeof(Startup));
@@ -98,15 +98,15 @@ namespace IdentityServer4.Admin.WebAPI
             app.UseAuthentication();
             app.UseAuthorization();
             app.UseProblemDetails();
-            //app.UseSwagger();
-            //app.UseSwaggerUI(c =>
-            //{
-            //    c.SwaggerEndpoint("/swagger/v1/swagger.json", "SSO Api Management");
-            //    c.OAuthClientId("Swagger");
-            //    c.OAuthClientSecret("swagger");
-            //    c.OAuthAppName("SSO Management Api");
-            //    c.OAuthUseBasicAuthenticationWithAccessCodeGrant();
-            //});
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "SSO Api Management");
+                c.OAuthClientId("Swagger");
+                c.OAuthClientSecret("swagger");
+                c.OAuthAppName("SSO Management Api");
+                c.OAuthUseBasicAuthenticationWithAccessCodeGrant();
+            });
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

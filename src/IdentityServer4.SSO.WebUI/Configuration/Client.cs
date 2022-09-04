@@ -73,8 +73,27 @@ namespace IdentityServer4.SSO.WebUI.Configuration
                         IdentityServerConstants.StandardScopes.Email,
                         "jp_api.user",
                     }
+                },
+                /*
+                 * Swagger
+                 */
+                new Client
+                {
+                    ClientId = "Swagger",
+                    ClientName = "Swagger UI",
+                    AllowedGrantTypes = GrantTypes.Implicit,
+                    LogoUri = "https://jpproject.blob.core.windows.net/images/swagger.png",
+                    AllowAccessTokensViaBrowser = true,
+                    RedirectUris =
+                    {
+                        $"{configuration.GetValue<string>("ApplicationSettings:ResourceServerURL")}/swagger/oauth2-redirect.html"
+                    },
+                    AllowedScopes =
+                    {
+                        "jp_api.user",
+                        "jp_api.is4",
+                    }
                 }
-
             };
 
         }
