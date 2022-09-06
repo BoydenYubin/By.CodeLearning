@@ -1,0 +1,5 @@
+{
+  "ConsulAddress": "http://localhost:8500",
+  "ServiceName": "ByLearningMicroService",
+  "HealthCheck": "/Health"
+}
