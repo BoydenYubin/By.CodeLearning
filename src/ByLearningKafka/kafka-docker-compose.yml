@@ -1,0 +1,96 @@
+version: '3.7'
+services: 
+  zookeeper:
+    #使用的是原生的zookeeper镜像  
+    image: zookeeper
+    container_name: zookeeper-master
+    restart: always
+    #本机模式测试可以使用桥接模式
+    #networks: 
+    #  - kafka-net
+    #使用宿主机模式，否则后续客户端(非sh客户端脚本)连接kafka集群出错
+    network_mode: "host"
+    volumes:
+      - /opt/zookeeper/conf:/conf
+    environment:
+      SERVER_JVMFLAGS: -Djava.security.auth.login.config=/conf/zk_server_jaas.conf
+    #ports: 
+    #  - "2181:2181"
+  kafka01:
+    #使用的是ubuntu/kafka镜像，在树莓派进行的集群测试
+    image: ubuntu/kafka
+    container_name: kafka-broker01
+    restart: always
+    depends_on: 
+      - zookeeper
+    #networks: 
+    #  - kafka-net
+    network_mode: "host"
+    hostname: kafka01
+    #ports: 
+    #  - "9092:9092"
+    # 配置config，logs和bin文件夹，主要是修改server.properties(启动配置文件)
+    # 产看logs
+    # 以及bin下的kafka-run-class.sh文件(配置sasl登录)
+    volumes:
+      - /opt/kafka-broker01/config:/opt/kafka/config
+      - /opt/kafka-broker01/logs:/opt/kafka/logs
+      - /opt/kafka-broker01/bin:/opt/kafka/bin
+    environment:
+      TZ: UTC
+      #ZOOKEEPER_HOST: zookeeper-master
+      #host设置为zookeeper的启动网址
+      ZOOKEEPER_HOST: 10.0.3.19
+      ZOOKEEPER_PORT: 2181
+    # command: ["/opt/kafka/bin/kafka-server-start.sh", "/opt/kafka/config/server.properties"]
+  kafka02:
+    image: ubuntu/kafka
+    container_name: kafka-broker02
+    restart: always
+    depends_on: 
+      - zookeeper
+      - kafka01
+    #networks: 
+    #  - kafka-net
+    network_mode: "host"
+    hostname: kafka02
+    #ports: 
+    #  - "9093:9093"
+    volumes:
+      - /opt/kafka-broker02/config:/opt/kafka/config
+      - /opt/kafka-broker02/logs:/opt/kafka/logs
+      - /opt/kafka-broker02/bin:/opt/kafka/bin
+    environment:
+      TZ: UTC
+      #ZOOKEEPER_HOST: zookeeper-master
+      ZOOKEEPER_HOST: 10.0.3.19
+      ZOOKEEPER_PORT: 2181
+    # command: ["/opt/kafka/bin/kafka-server-start.sh", "/opt/kafka/config/server.properties"]
+  kafka03:
+    image: ubuntu/kafka
+    container_name: kafka-broker03
+    restart: always
+    depends_on: 
+      - zookeeper
+      - kafka01
+      - kafka02
+    #networks: 
+    #  - kafka-net
+    network_mode: "host"
+    hostname: kafka03
+    #ports: 
+    #  - "9094:9094"
+    volumes:
+      - /opt/kafka-broker03/config:/opt/kafka/config
+      - /opt/kafka-broker03/logs:/opt/kafka/logs
+      - /opt/kafka-broker03/bin:/opt/kafka/bin
+    environment:
+      TZ: UTC
+      #ZOOKEEPER_HOST: zookeeper-master
+      ZOOKEEPER_HOST: 10.0.3.19
+      ZOOKEEPER_PORT: 2181
+    # command: ["/opt/kafka/bin/kafka-server-start.sh", "/opt/kafka/config/server.properties"]
+networks:
+ kafka-net:
+   external:
+     name: kafka-net
