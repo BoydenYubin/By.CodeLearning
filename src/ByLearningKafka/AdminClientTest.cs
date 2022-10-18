@@ -37,16 +37,15 @@ namespace ByLearningKafka
                         Name = topic,
                         NumPartitions = 3,
                         //this must set to be 3, or it will throw the excpetion
+                        //confluent.cloud settings
                         ReplicationFactor = 3
                     }
                 };
                 try
                 {
-                    adminClient.CreateTopicsAsync(topics)
-                               .ContinueWith(task =>
-                               {
-                                   task.IsFaulted.ShouldBeFalse();
-                               });
+                    var task = adminClient.CreateTopicsAsync(topics, new CreateTopicsOptions() { RequestTimeout = TimeSpan.FromSeconds(5) });
+                    var result = task.ContinueWith(status => status.IsFaulted ? "create topics error!" : "create topics successfully!").Result;
+                    result.ShouldNotContain("error");
                 }
                 catch (CreateTopicsException e)
                 {
@@ -101,7 +100,7 @@ namespace ByLearningKafka
                     adminClient.CreateTopicsAsync(new List<TopicSpecification>(topics))
                         .ContinueWith(task => task.IsFaulted.ShouldBeFalse());
                 }
-                catch(CreateTopicsException e)
+                catch (CreateTopicsException e)
                 {
                     // this should not be here
                     e.Error.ShouldNotBeNull();

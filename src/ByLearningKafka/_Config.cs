@@ -21,7 +21,7 @@ namespace ByLearningKafka
                 SaslUsername = SaslUsername,
                 SaslPassword = SaslPassword,
                 SaslMechanism = SaslMechanism.Plain,
-                SecurityProtocol = SecurityProtocol.SaslSsl
+                SecurityProtocol = SecurityProtocol.SaslPlaintext
             };
         }
 
