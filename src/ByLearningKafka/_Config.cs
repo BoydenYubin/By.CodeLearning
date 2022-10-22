@@ -7,9 +7,10 @@ namespace ByLearningKafka
         // Use Confluent Cloud to Create Kafka cluster to use the BootstrapServers
         // https://confluent.cloud
         // relpace the string to use your confluent
-        public static string BootstrapServers = "xxxx";
+        // 多个servers 用,隔开
+        public static string BootstrapServers = "10.0.3.19:9092,10.0.3.19:9093,10.0.3.19:9094";
         public static string SaslUsername = "xxxx";
-        public static string SaslPassword = "xxxx";
+        public static string SaslPassword = "xxxx-secret";
 
         public const string TopicName = "bykafka_first_test_topic";
 

@@ -56,6 +56,17 @@ namespace ByLearningKafka
 
         [Theory]
         [InlineData(Config.TopicName)]
+        public void DeleteTopicTest(string topic)
+        {
+            using (var adminClient = new AdminClientBuilder(_config).Build())
+            {
+                adminClient.DeleteTopicsAsync(new List<string>() { topic }).ContinueWith(task => task.IsFaulted.ShouldBeFalse());
+
+            }
+        }
+
+        [Theory]
+        [InlineData(Config.TopicName)]
         public void GetMetaDataTest(string topic)
         {
             using (var adminClient = new AdminClientBuilder(_config).Build())
