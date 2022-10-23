@@ -1,0 +1,22 @@
+version: '3.7'
+services: 
+  mysql:
+    #使用的是原生的mysql镜像  
+    #https://hub.docker.com/_/mysql
+    image: mysql
+    container_name: mysql-ORM
+    restart: always
+    #本机模式测试可以使用桥接模式
+    #networks: 
+    #  - mysql-net
+    #使用宿主机模式，否则后续客户端(非sh客户端脚本)
+    #network_mode: "host"
+    volumes:
+      - $PWD/mysql/conf/my.cnf:/etc/mysql/my.cnf
+      - $PWD/mysql/data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: By@Mysql-1992
+      MYSQL_USER: Tester
+      MYSQL_PASSWORD: Tester@Mysql-2022
+    ports: 
+      - "3306:3306"
