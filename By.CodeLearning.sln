@@ -5,7 +5,21 @@ VisualStudioVersion = 16.0.30907.101
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ByLearning.MassTransit", "src\ByLearning.MassTransit\ByLearning.MassTransit.csproj", "{A5902F66-0FD9-4647-86D0-2DA83FCA6B88}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ByLearning.Masstransit.StateMachine", "src\ByLearning.Masstransit.StateMachine\ByLearning.Masstransit.StateMachine.csproj", "{DF33F11A-BBD5-41CB-908B-AB2F7C0651BF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ByLearning.Masstransit.StateMachine", "src\ByLearning.Masstransit.StateMachine\ByLearning.Masstransit.StateMachine.csproj", "{DF33F11A-BBD5-41CB-908B-AB2F7C0651BF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SegaTransitionTest", "SegaTransitionTest", "{5BC5DBFD-1A7C-465F-AC2B-7AABBCE78A33}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ByLearning.OrderServices", "src\ShoppingCartServices\ByLearning.OrderServices.csproj", "{5760CE4C-82DD-4A77-94EF-12C7226BEB49}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ByLearning.SagaOrchestrator", "src\ByLearning.SagaOrchestrator\ByLearning.SagaOrchestrator.csproj", "{2B2ADCAA-58B2-4C79-BADB-D4B71A0ED59D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ByLearning.StockServices", "src\ByLearning.StockServices\ByLearning.StockServices.csproj", "{C6B1BB1D-648F-4E2C-8E18-0A7C15A3DC90}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ByLearning.FullfillShoppingCartServices", "src\ByLearning.FullfillShoppingCartServices\ByLearning.FullfillShoppingCartServices.csproj", "{045F9A90-09B6-4DAF-B172-A24D18A92EC0}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ByLearning.PaymentServices", "src\ByLearning.PaymentServices\ByLearning.PaymentServices.csproj", "{D29A228A-3E43-4583-BBD9-562EEBE8E26E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ByLearning.SagaTransitionConfiguration", "src\ByLearning.SagaTransitionConfiguration\ByLearning.SagaTransitionConfiguration.csproj", "{7EAF1AA4-6236-4D68-B0DF-F87D06F02129}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,9 +35,41 @@ Global
 		{DF33F11A-BBD5-41CB-908B-AB2F7C0651BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DF33F11A-BBD5-41CB-908B-AB2F7C0651BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DF33F11A-BBD5-41CB-908B-AB2F7C0651BF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5760CE4C-82DD-4A77-94EF-12C7226BEB49}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5760CE4C-82DD-4A77-94EF-12C7226BEB49}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5760CE4C-82DD-4A77-94EF-12C7226BEB49}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5760CE4C-82DD-4A77-94EF-12C7226BEB49}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B2ADCAA-58B2-4C79-BADB-D4B71A0ED59D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B2ADCAA-58B2-4C79-BADB-D4B71A0ED59D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B2ADCAA-58B2-4C79-BADB-D4B71A0ED59D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B2ADCAA-58B2-4C79-BADB-D4B71A0ED59D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C6B1BB1D-648F-4E2C-8E18-0A7C15A3DC90}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6B1BB1D-648F-4E2C-8E18-0A7C15A3DC90}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6B1BB1D-648F-4E2C-8E18-0A7C15A3DC90}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6B1BB1D-648F-4E2C-8E18-0A7C15A3DC90}.Release|Any CPU.Build.0 = Release|Any CPU
+		{045F9A90-09B6-4DAF-B172-A24D18A92EC0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{045F9A90-09B6-4DAF-B172-A24D18A92EC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{045F9A90-09B6-4DAF-B172-A24D18A92EC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{045F9A90-09B6-4DAF-B172-A24D18A92EC0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D29A228A-3E43-4583-BBD9-562EEBE8E26E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D29A228A-3E43-4583-BBD9-562EEBE8E26E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D29A228A-3E43-4583-BBD9-562EEBE8E26E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D29A228A-3E43-4583-BBD9-562EEBE8E26E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7EAF1AA4-6236-4D68-B0DF-F87D06F02129}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7EAF1AA4-6236-4D68-B0DF-F87D06F02129}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7EAF1AA4-6236-4D68-B0DF-F87D06F02129}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7EAF1AA4-6236-4D68-B0DF-F87D06F02129}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{5760CE4C-82DD-4A77-94EF-12C7226BEB49} = {5BC5DBFD-1A7C-465F-AC2B-7AABBCE78A33}
+		{2B2ADCAA-58B2-4C79-BADB-D4B71A0ED59D} = {5BC5DBFD-1A7C-465F-AC2B-7AABBCE78A33}
+		{C6B1BB1D-648F-4E2C-8E18-0A7C15A3DC90} = {5BC5DBFD-1A7C-465F-AC2B-7AABBCE78A33}
+		{045F9A90-09B6-4DAF-B172-A24D18A92EC0} = {5BC5DBFD-1A7C-465F-AC2B-7AABBCE78A33}
+		{D29A228A-3E43-4583-BBD9-562EEBE8E26E} = {5BC5DBFD-1A7C-465F-AC2B-7AABBCE78A33}
+		{7EAF1AA4-6236-4D68-B0DF-F87D06F02129} = {5BC5DBFD-1A7C-465F-AC2B-7AABBCE78A33}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7B689141-88D8-4B03-9093-02FCD315F65B}

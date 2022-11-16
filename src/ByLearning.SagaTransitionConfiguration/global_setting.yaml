@@ -1,0 +1,15 @@
+﻿GlobalSettings: 
+  RedisServerConfiguration: 
+    Server_Address: 10.0.211.16
+    Server_Port: 6379
+    Username: test
+    Password: test
+  RabbitMqConfiguration: 
+    Broker_Address: 10.0.211.16
+    Broker_Port: 5672
+    Username: guest
+    Password: guest
+    VirtualHost: /
+  PrefetchCount: 100
+  ConcurrentMessageLimit: 10
+  StockNumber: 50
