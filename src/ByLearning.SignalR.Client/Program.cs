@@ -9,7 +9,7 @@ namespace ByLearning.SignalR.Client
         static async Task Main(string[] args)
         {
             var connection = new HubConnectionBuilder()
-                .WithUrl("http://localhost:5000/charthub")
+                .WithUrl("http://localhost:5000/intimechathub")
                 .Build();
             connection.Closed += async (error) =>
             {
@@ -17,14 +17,30 @@ namespace ByLearning.SignalR.Client
                 Console.WriteLine("client closing!!");
                 await connection.StartAsync();
             };
-            connection.On<string, string>("Echo", (user, message) =>
+            connection.On<string, string>("SendMessage", (user, message) =>
             {
                 Console.WriteLine($"user:{user},message:{message}");
             });
             await connection.StartAsync();
-            var result = await connection.InvokeAsync<string>("Echo", "Hello", "Message");
-            Console.WriteLine(result);
-            Console.ReadLine();
+            bool first = true;
+            string registerUser = string.Empty;
+            while (true)
+            {
+                if (first)
+                {
+                    Console.WriteLine("Please input the username to chart with each other!");
+                    registerUser = Console.ReadLine();
+                    if (await connection.InvokeAsync<bool>("RegisterClientInHub", registerUser))
+                    {
+                        first = false;
+                    }
+                    continue;
+                }
+                Console.WriteLine("Please enter the user name to send message");
+                var userID = Console.ReadLine();
+                if (await connection.InvokeAsync<bool>("SendMessageToClient", userID, $"Message from {registerUser}"))
+                    Console.WriteLine("Send sucessfully!");
+            }
         }
     }
 }

@@ -30,6 +30,7 @@ namespace ByLerning.SignalR
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapHub<ChartHub>("/charthub");
+                endpoints.MapHub<StronglyTypedChatHub>("/intimechathub");
             });
         }
     }
