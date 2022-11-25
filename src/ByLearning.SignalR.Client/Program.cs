@@ -22,7 +22,8 @@ namespace ByLearning.SignalR.Client
                 Console.WriteLine($"user:{user},message:{message}");
             });
             await connection.StartAsync();
-            await connection.InvokeAsync("Echo", "Hello", "Message");
+            var result = await connection.InvokeAsync<string>("Echo", "Hello", "Message");
+            Console.WriteLine(result);
             Console.ReadLine();
         }
     }

@@ -7,7 +7,7 @@ namespace ByLerning.SignalR
         public string Echo(string user,string message)
         {
             System.Console.WriteLine($"user:{user},message:{message}");
-            return message;
+            return $"replyed message from server: {message}";
         }
     }
 }
