@@ -1,5 +1,6 @@
 ﻿using ByLearning.Masstransit.StateMachine.StateMachineModel;
 using ByLearning.Masstransit.StateMachine.Worker;
+using ByLearning.SagaTransitionConfiguration;
 using MassTransit;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -24,7 +25,10 @@ namespace ByLearning.Masstransit.StateMachine
                                  {
                                      ///<seealso cref="MassTransit.Configuration.BusRegistrationContext"/>
                                      configurator.AddSagaStateMachine<ByLearningStateMachine, ByLearningState>()
-                                     .InMemoryRepository();
+                                     .RedisRepository(config =>
+                                     {
+                                         config.DatabaseConfiguration(GlobalConfiguration.GlobalSettings.RedisServerConfiguration.Server_Address);
+                                     });
                                      configurator.UsingInMemory((cfg, context) =>
                                      {
                                          //主要用于配置接受节点ReceiveEndpoint

@@ -1,10 +1,9 @@
-﻿using Automatonymous;
-using MassTransit;
+﻿using MassTransit;
 using System;
 
 namespace ByLearning.Masstransit.StateMachine.StateMachineModel
 {
-    public class ByLearningState : SagaStateMachineInstance
+    public class ByLearningState : SagaStateMachineInstance, ISagaVersion
     {
         protected ByLearningState() { }
         public ByLearningState(Guid correlationId)
@@ -14,7 +13,7 @@ namespace ByLearning.Masstransit.StateMachine.StateMachineModel
         /// <summary>
         /// The state of the saga
         /// </summary>
-        public State State { get; set; }
+        public int State { get; set; }
 
         /// <summary>
         /// When the routing slip was started
@@ -46,5 +45,6 @@ namespace ByLearning.Masstransit.StateMachine.StateMachineModel
         /// </summary>
         public Guid CorrelationId { get; set; }
         public int ReadyEventStatus { get; set; }
+        public int Version { get; set; }
     }
 }

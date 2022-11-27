@@ -6,8 +6,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="MassTransit.RabbitMQ" Version="8.0.0" />
+    <PackageReference Include="MassTransit.Redis" Version="8.0.0" />
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="3.1.18" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ByLearning.SagaTransitionConfiguration\ByLearning.SagaTransitionConfiguration.csproj" />
   </ItemGroup>
 
 </Project>

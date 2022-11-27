@@ -8,7 +8,7 @@ namespace ByLearning.Masstransit.StateMachine.StateMachineModel
     {
         public ByLearningStateMachine()
         {
-            InstanceState(state => state.State);
+            InstanceState(state => state.State, StateInitial, TriggedByAorB, TriggedByAadnB, StateCompleted);
 
             //A composite event is configured by specifying one or more events that must be consumed, after which the composite event will be raised. 
             //http://masstransit-project.com/usage/sagas/automatonymous.html#composite-event
