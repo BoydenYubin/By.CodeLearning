@@ -17,6 +17,7 @@ namespace ByLerning.SignalR
 
         public void ConfigureServices(IServiceCollection services) 
         {
+            services.AddScoped<ITestInjection, TestInjection>();
             services.AddConnections();
             services.AddSignalR(options =>
             {

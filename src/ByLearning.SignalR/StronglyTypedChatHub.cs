@@ -12,6 +12,12 @@ namespace ByLerning.SignalR
     public class StronglyTypedChatHub : Hub<IChatClient>
     {
         private static ConcurrentDictionary<string, string> _clientLists = new ConcurrentDictionary<string, string>();
+        private readonly ITestInjection injection;
+
+        public StronglyTypedChatHub(ITestInjection injection)
+        {
+            this.injection = injection;
+        }
         public Task<bool> RegisterClientInHub(string userID)
         {
             try
@@ -40,6 +46,7 @@ namespace ByLerning.SignalR
         {
             try
             {
+                Console.WriteLine(injection.GetHashCode());
                 if (_clientLists.TryGetValue(receiveUserId, out string userID))
                 {
                     Clients.Client(userID).SendMessage(Context.ConnectionId, message);
