@@ -27,4 +27,6 @@
 - [ ] [System.Windows.Forms.Timer](https://docs.microsoft.com/en-us/dotnet/api/system.windows.forms.timer?view=net-5.0)
 - [ ] [System.Web.UI.Time](https://docs.microsoft.com/en-us/dotnet/api/system.web.ui.timer?view=net-5.0)
 - [ ] [System.Windows.Threading.DispatcherTimer](https://docs.microsoft.com/en-us/dotnet/api/system.windows.threading.dispatchertimer?view=net-5.0)
+- [x] [ReaderWriterLockSlim](https://learn.microsoft.com/en-us/dotnet/api/system.threading.readerwriterlockslim?view=net-5.0)
+ 
 
