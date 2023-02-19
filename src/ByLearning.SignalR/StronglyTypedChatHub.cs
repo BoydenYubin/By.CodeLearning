@@ -9,6 +9,10 @@ namespace ByLerning.SignalR
     {
         Task SendMessage(string user, string message);
     }
+
+    public interface ITestInjection { }
+    public class TestInjection : ITestInjection { }
+
     public class StronglyTypedChatHub : Hub<IChatClient>
     {
         private static ConcurrentDictionary<string, string> _clientLists = new ConcurrentDictionary<string, string>();
