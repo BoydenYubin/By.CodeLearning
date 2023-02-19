@@ -22,8 +22,8 @@ namespace ByLearning.MassTransit.DemoRecord
         }
         public Task Consume(ConsumeContext<OrderCreatedEvent> context)
         {
-            _logger.LogInformation($"Received Order:{context.Message.OrderId}");
-            _logger.LogInformation($"- - - - - - - - - - - - - - - - - - - - - -{DateTimeOffset.Now}");
+            //_logger.LogInformation($"Received Order:{context.Message.OrderId}");
+            //_logger.LogInformation($"- - - - - - - - - - - - - - - - - - - - - -{DateTimeOffset.Now}");
             return Task.CompletedTask;
         }
     }
@@ -42,12 +42,13 @@ namespace ByLearning.MassTransit.DemoRecord
         {
             while (!stoppingToken.IsCancellationRequested)
             {
+                await Task.Delay(1500, stoppingToken);
                 //模拟并发送订单创建事件
                 Guid id = Guid.NewGuid();
                 await _bus.Publish(new OrderCreatedEvent() { OrderId = id }, stoppingToken);
-                _logger.LogInformation($"Published Order:{id}");
-                //时间间隔1s
-                await Task.Delay(1000, stoppingToken);
+                //await _bus.Send(new OrderCreatedEvent() { OrderId = id }, stoppingToken);
+                //_logger.LogInformation($"Published Order:{id}");
+                //时间间隔1s            
             }
         }
     }

@@ -1,0 +1,15 @@
+﻿{
+  "$schema": "http://json.schemastore.org/launchsettings.json",
+  "profiles": {
+    "ByLearning.Masstransit.WebApi.TrackingTest": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "launchUrl": "tracking/publish",
+      "applicationUrl": "http://localhost:5000",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "ASPNETCORE_HOSTINGSTARTUPASSEMBLIES": "SkyApm.Diagnostics.MassTransit"
+      }
+    }
+  }
+}

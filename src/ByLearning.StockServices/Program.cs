@@ -2,9 +2,13 @@
 using ByLearning.StockServices.Activity;
 using ByLearning.StockServices.Models;
 using MassTransit;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using SkyApm.AspNetCore.Diagnostics;
+using SkyApm.Diagnostics.MassTransit;
 using System;
+using System.Diagnostics;
 using System.Threading.Tasks;
 
 namespace ShoppingCartServices
@@ -13,12 +17,28 @@ namespace ShoppingCartServices
     {
         static async Task Main(string[] args)
         {
+            //config the ActivityListener 
+            Activity.DefaultIdFormat = ActivityIdFormat.W3C;
+            Activity.ForceDefaultIdFormat = true;
+            ActivitySource.AddActivityListener(new ActivityListener()
+            {
+                ShouldListenTo = (source) => source.Name == "MassTransit",
+                Sample = (ref ActivityCreationOptions<ActivityContext> options) => ActivitySamplingResult.AllDataAndRecorded,
+                ActivityStarted = activity => { },
+                ActivityStopped = activity => { }
+            });
             Console.Title = "Stock Service";
             var reduceStockQueueName = "execute_stock";
             var compensateStockQueueName = "compensate_stock";
             IHost host = Host.CreateDefaultBuilder(args)
                              .ConfigureServices(services =>
                              {
+                                 //for skywalking
+                                 services.AddSkyAPM(ext =>
+                                 {
+                                     ext.AddMasstransit();
+                                     ext.AddAspNetCoreHosting();
+                                 });
                                  //工作线程，用于模拟发送消息
                                  //services.AddHostedService<CartHostedService>();
                                  //AddMassTransit 用于添加Masstransit相关依赖项

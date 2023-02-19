@@ -22,25 +22,25 @@ namespace ByLearning.Masstransit.StateMachine.Worker
         {
             while (!stoppingToken.IsCancellationRequested)
             {
+                await Task.Delay(2000, stoppingToken);
                 Guid id = Guid.NewGuid();
                 await _bus.Publish<IInitialState>(new { CorrelationId = id });
                 //时间间隔1s
-                await Task.Delay(1000, stoppingToken);
+                await Task.Delay(2000, stoppingToken);
 
                 Console.WriteLine("Pubed A");
                 await _bus.Publish<ITrigerA>(new { CorrelationId = id });
-                await Task.Delay(1000, stoppingToken);
+                await Task.Delay(2000, stoppingToken);
 
                 Console.WriteLine("Pubed C");
                 await _bus.Publish<ITrigerC>(new { CorrelationId = id });
-                await Task.Delay(1000, stoppingToken);
+                await Task.Delay(2000, stoppingToken);
 
                 Console.WriteLine("Pubed D");
                 await _bus.Publish<ITrigerD>(new { CorrelationId = id });
-                await Task.Delay(1000, stoppingToken);
+                await Task.Delay(2000, stoppingToken);
 
                 await _bus.Publish<IStateProcessed>(new { CorrelationId = id });
-                await Task.Delay(2000, stoppingToken);
             }
         }
     }

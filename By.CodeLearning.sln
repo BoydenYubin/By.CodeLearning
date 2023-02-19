@@ -21,6 +21,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ByLearning.PaymentServices"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ByLearning.SagaTransitionConfiguration", "src\ByLearning.SagaTransitionConfiguration\ByLearning.SagaTransitionConfiguration.csproj", "{7EAF1AA4-6236-4D68-B0DF-F87D06F02129}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ByLearning.Masstransit.WebApi.TrackingTest", "src\ByLearning.Masstransit.WebApi.TrackingTest\ByLearning.Masstransit.WebApi.TrackingTest.csproj", "{E652A2FE-86C5-46C5-B526-A1E349035215}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SkyApm.Diagnostics.MassTransit", "src\SkyApm.Diagnostics.MassTransit\SkyApm.Diagnostics.MassTransit.csproj", "{74C0F301-7705-4738-9862-B2D5CB4CCB77}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -59,6 +63,14 @@ Global
 		{7EAF1AA4-6236-4D68-B0DF-F87D06F02129}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7EAF1AA4-6236-4D68-B0DF-F87D06F02129}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7EAF1AA4-6236-4D68-B0DF-F87D06F02129}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E652A2FE-86C5-46C5-B526-A1E349035215}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E652A2FE-86C5-46C5-B526-A1E349035215}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E652A2FE-86C5-46C5-B526-A1E349035215}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E652A2FE-86C5-46C5-B526-A1E349035215}.Release|Any CPU.Build.0 = Release|Any CPU
+		{74C0F301-7705-4738-9862-B2D5CB4CCB77}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74C0F301-7705-4738-9862-B2D5CB4CCB77}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74C0F301-7705-4738-9862-B2D5CB4CCB77}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74C0F301-7705-4738-9862-B2D5CB4CCB77}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -3,8 +3,11 @@ using MassTransit;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using SkyApm.AspNetCore.Diagnostics;
+using SkyApm.Diagnostics.MassTransit;
 using StackExchange.Redis;
 using System;
+using System.Diagnostics;
 using System.Threading.Tasks;
 
 namespace ByLearning.SagaOrchestrator
@@ -13,6 +16,13 @@ namespace ByLearning.SagaOrchestrator
     {
         static async Task Main(string[] args)
         {
+            ActivitySource.AddActivityListener(new ActivityListener()
+            {
+                ShouldListenTo = (source) => source.Name == "MassTransit",
+                Sample = (ref ActivityCreationOptions<ActivityContext> options) => ActivitySamplingResult.AllDataAndRecorded,
+                ActivityStarted = activity => Console.WriteLine("Started: {0,-15} {1,-60},{2, -70}", activity.OperationName, activity.Id, activity.ParentId),
+                ActivityStopped = activity => Console.WriteLine("Stopped: {0,-15} {1,-60} {2,-15}", activity.OperationName, activity.Id, activity.Duration)
+            });
             Console.Title = "Saga Orchestrator";
             var config = new ConfigurationOptions()
             {
@@ -24,6 +34,12 @@ namespace ByLearning.SagaOrchestrator
             IHost host = Host.CreateDefaultBuilder(args)
                     .ConfigureServices(services =>
                     {
+                        //for skywalking
+                        services.AddSkyAPM(ext =>
+                        {
+                            ext.AddMasstransit();
+                            ext.AddAspNetCoreHosting();
+                        });
                         services.AddSingleton(connection);
                         //工作线程，用于模拟发送消息
                         services.AddHostedService<OrchestratorService>();

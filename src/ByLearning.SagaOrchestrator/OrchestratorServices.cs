@@ -37,7 +37,7 @@ namespace ByLearning.SagaOrchestrator
         {
             while (true)
             {
-                await Task.Delay(TimeSpan.FromMilliseconds(50));
+                await Task.Delay(TimeSpan.FromMilliseconds(1000));
 
                 try
                 {
