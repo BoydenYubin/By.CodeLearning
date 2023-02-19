@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.SignalR.Client;
 using System;
+using System.IO;
 using System.Threading.Tasks;
 
 namespace ByLearning.SignalR.Client
@@ -10,6 +11,8 @@ namespace ByLearning.SignalR.Client
         {
             var connection = new HubConnectionBuilder()
                 .WithUrl("http://localhost:5000/intimechathub")
+                .WithUrl("http://localhost:5000/charthub")
+                .WithUrl("http://localhost:5000/streamhub")
                 .Build();
             connection.Closed += async (error) =>
             {
@@ -24,6 +27,20 @@ namespace ByLearning.SignalR.Client
             await connection.StartAsync();
             bool first = true;
             string registerUser = string.Empty;
+
+            var channel = await connection.StreamAsChannelAsync<byte[]>("DownloadFileTest");
+            var file = new FileStream("test.zip", FileMode.CreateNew);
+            while (await channel.WaitToReadAsync())
+            {
+                // Read all currently available data synchronously, before waiting for more data
+                while (channel.TryRead(out var buffer))
+                {
+                    file.Write(buffer, 0, buffer.Length);
+                }
+            }
+            file.Flush();
+            file.Close();
+
             while (true)
             {
                 if (first)

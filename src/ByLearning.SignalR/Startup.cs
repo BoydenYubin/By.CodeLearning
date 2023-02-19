@@ -32,6 +32,7 @@ namespace ByLerning.SignalR
             {
                 endpoints.MapHub<ChartHub>("/charthub");
                 endpoints.MapHub<StronglyTypedChatHub>("/intimechathub");
+                endpoints.MapHub<StreamHub>("/streamhub");
             });
         }
     }
