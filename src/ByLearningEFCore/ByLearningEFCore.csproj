@@ -7,7 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20230318052928_init_blogcontext_230318.cs" />
+    <Compile Remove="Migrations\20230318052928_init_blogcontext_230318.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.6" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.1.6" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.6">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -24,12 +30,17 @@
 
   <ItemGroup>
     <Folder Include="DbFirst\" />
-    <Folder Include="Migrations\" />
     <Folder Include="Pictures\" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\ByLearningORM.Util\ByLearningORM.Util.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="test.db">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

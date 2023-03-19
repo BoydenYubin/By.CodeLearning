@@ -33,8 +33,8 @@ namespace ByLearningEFCore
             builder.ToTable("blogs");
             builder.HasKey(b => b.Id);
             builder.Property(p => p.Name).HasMaxLength(500).IsRequired();
-            builder.Property(p => p.CreatedTime).HasColumnType("DATETIME").HasDefaultValueSql("NOW()");
-            builder.Property(p => p.ModifiedTime).HasColumnType("DATETIME").HasDefaultValueSql("NOW()");
+            builder.Property(p => p.CreatedTime).HasColumnType("DATETIME").HasDefaultValueSql("date('now')");
+            builder.Property(p => p.ModifiedTime).HasColumnType("DATETIME").HasDefaultValueSql("date('now')");
 
             builder.HasMany(p => p.Posts).WithOne(b => b.Blog).HasForeignKey(b => b.BlogId);
         }
@@ -47,13 +47,17 @@ namespace ByLearningEFCore
             builder.ToTable("posts");
             builder.HasKey(p => p.Id);
             builder.Property(p => p.Name).HasMaxLength(500).IsRequired();
-            builder.Property(p => p.CreatedTime).HasColumnType("DATETIME").HasDefaultValueSql("NOW()");
-            builder.Property(p => p.ModifiedTime).HasColumnType("DATETIME").HasDefaultValueSql("NOW()");
+            builder.Property(p => p.CreatedTime).HasColumnType("DATETIME").HasDefaultValueSql("date('now')");
+            builder.Property(p => p.ModifiedTime).HasColumnType("DATETIME").HasDefaultValueSql("date('now')");
         }
     }
 
     public class BlogContext : DbContext
     {
+        public BlogContext()
+        {
+            Database.Migrate();
+        }
         public DbSet<BlogEntity> Blogs { get; set; }
         public DbSet<PostEntity> Posts { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -63,7 +67,8 @@ namespace ByLearningEFCore
                 config.AddDebug();
             });
             optionsBuilder.UseLoggerFactory(looger);
-            optionsBuilder.UseMySql(GetConfig.GetConnectionString());
+            optionsBuilder.UseSqlite(GetConfig.GetConnectionString());
+            //optionsBuilder.UseMySql(GetConfig.GetConnectionString());
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
