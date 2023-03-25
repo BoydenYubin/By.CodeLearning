@@ -46,7 +46,7 @@ namespace ByLerning.SignalR
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapDefaultControllerRoute();
-                //endpoints.MapHub<ChartHub>("/charthub");
+                endpoints.MapHub<ChartHub>("/charthub");
                 endpoints.MapHub<StronglyTypedChatHub>("/intimechathub");
                 endpoints.MapHub<StreamHub>("/streamhub");
             });

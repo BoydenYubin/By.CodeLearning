@@ -27,8 +27,8 @@ namespace ByLearning.SignalR.Client
                         return clientHandler;
                     };
                 })
-                .WithUrl("https://localhost:5000/charthub")
-                .WithUrl("https://localhost:5000/streamhub")
+                //.WithUrl("https://localhost:5000/charthub")
+                //.WithUrl("https://localhost:5000/streamhub")
                 .WithAutomaticReconnect(new TimeSpan[] { TimeSpan.FromSeconds(2), TimeSpan.FromSeconds(4) })
                 .Build();
             connection.Closed += async (error) =>
