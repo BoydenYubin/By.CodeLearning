@@ -48,7 +48,7 @@ namespace ByLerning.SignalR
                 endpoints.MapDefaultControllerRoute();
                 //endpoints.MapHub<ChartHub>("/charthub");
                 endpoints.MapHub<StronglyTypedChatHub>("/intimechathub");
-                //endpoints.MapHub<StreamHub>("/streamhub");
+                endpoints.MapHub<StreamHub>("/streamhub");
             });
         }
     }
