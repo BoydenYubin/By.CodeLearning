@@ -1,7 +1,9 @@
-﻿using Microsoft.AspNetCore.SignalR;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.SignalR;
 
 namespace ByLerning.SignalR
 {
+    [Authorize]
     public class ChartHub : Hub
     {
         public string Echo(string user,string message)

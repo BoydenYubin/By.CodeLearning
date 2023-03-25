@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Authentication.Certificate;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -19,6 +21,17 @@ namespace ByLerning.SignalR
         {
             services.AddScoped<ITestInjection, TestInjection>();
             services.AddConnections();
+            services.AddControllers();
+            services.AddAuthentication(options => 
+            {
+                //options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+                options.DefaultScheme = CertificateAuthenticationDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = CertificateAuthenticationDefaults.AuthenticationScheme;
+            })
+            .AddCertificate(options => 
+            {
+                options.ValidateCertificateUse = true;
+            });
             services.AddSignalR(options =>
             {
                 options.EnableDetailedErrors = true;
@@ -28,11 +41,14 @@ namespace ByLerning.SignalR
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             app.UseRouting();
+            app.UseAuthentication();
+            app.UseAuthorization();
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapHub<ChartHub>("/charthub");
+                endpoints.MapDefaultControllerRoute();
+                //endpoints.MapHub<ChartHub>("/charthub");
                 endpoints.MapHub<StronglyTypedChatHub>("/intimechathub");
-                endpoints.MapHub<StreamHub>("/streamhub");
+                //endpoints.MapHub<StreamHub>("/streamhub");
             });
         }
     }

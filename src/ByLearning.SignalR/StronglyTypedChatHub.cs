@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.SignalR;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.SignalR;
 using System;
 using System.Collections.Concurrent;
 using System.Threading.Tasks;
@@ -13,6 +14,8 @@ namespace ByLerning.SignalR
     public interface ITestInjection { }
     public class TestInjection : ITestInjection { }
 
+
+    [Authorize]
     public class StronglyTypedChatHub : Hub<IChatClient>
     {
         private static ConcurrentDictionary<string, string> _clientLists = new ConcurrentDictionary<string, string>();

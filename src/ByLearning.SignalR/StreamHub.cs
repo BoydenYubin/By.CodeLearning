@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.SignalR;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.SignalR;
 using System;
 using System.IO;
 using System.Threading.Channels;
 
 namespace ByLerning.SignalR
 {
+    [Authorize]
     public class StreamHub : Hub
     {
         public ChannelReader<byte[]> DownloadFileTest()

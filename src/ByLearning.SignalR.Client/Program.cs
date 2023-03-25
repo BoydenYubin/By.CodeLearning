@@ -10,9 +10,26 @@ namespace ByLearning.SignalR.Client
         static async Task Main(string[] args)
         {
             var connection = new HubConnectionBuilder()
-                .WithUrl("http://localhost:5000/intimechathub")
-                .WithUrl("http://localhost:5000/charthub")
-                .WithUrl("http://localhost:5000/streamhub")
+                .WithUrl("https://localhost:5000/intimechathub",options => 
+                {
+                    //options.Transports = Microsoft.AspNetCore.Http.Connections.HttpTransportType.WebSockets;
+                    options.ClientCertificates.Add(new System.Security.Cryptography.X509Certificates.X509Certificate2(@"D:\unilumin.ucb41.pfx","dolbyuni"));
+                    options.HttpMessageHandlerFactory = httpmessageHandler => 
+                    {
+                        var clientHandler = httpmessageHandler as System.Net.Http.HttpClientHandler;
+                        if(clientHandler != null)
+                        {
+                            clientHandler.ServerCertificateCustomValidationCallback = (request, certificate, chain, errors) =>
+                            {
+                                return true;
+                            };
+                        }
+                        return clientHandler;
+                    };
+                })
+                .WithUrl("https://localhost:5000/charthub")
+                .WithUrl("https://localhost:5000/streamhub")
+                .WithAutomaticReconnect(new TimeSpan[] { TimeSpan.FromSeconds(2), TimeSpan.FromSeconds(4) })
                 .Build();
             connection.Closed += async (error) =>
             {
@@ -28,18 +45,18 @@ namespace ByLearning.SignalR.Client
             bool first = true;
             string registerUser = string.Empty;
 
-            var channel = await connection.StreamAsChannelAsync<byte[]>("DownloadFileTest");
-            var file = new FileStream("test.zip", FileMode.CreateNew);
-            while (await channel.WaitToReadAsync())
-            {
-                // Read all currently available data synchronously, before waiting for more data
-                while (channel.TryRead(out var buffer))
-                {
-                    file.Write(buffer, 0, buffer.Length);
-                }
-            }
-            file.Flush();
-            file.Close();
+            //var channel = await connection.StreamAsChannelAsync<byte[]>("DownloadFileTest");
+            //var file = new FileStream("test.zip", FileMode.CreateNew);
+            //while (await channel.WaitToReadAsync())
+            //{
+            //    // Read all currently available data synchronously, before waiting for more data
+            //    while (channel.TryRead(out var buffer))
+            //    {
+            //        file.Write(buffer, 0, buffer.Length);
+            //    }
+            //}
+            //file.Flush();
+            //file.Close();
 
             while (true)
             {
